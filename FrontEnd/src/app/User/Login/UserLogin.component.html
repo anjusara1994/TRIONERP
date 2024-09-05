@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+   
+    <!-- Unicons -->
+   
+  </head>
+  <body>
+    <div class="container" id="container">
+      
+      <div class="form-container sign-in-container">
+        <form (ngSubmit)="validateForm()">
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social"><i class="fab fa-google"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
+          </div>
+        
+          <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text"  name="username"  placeholder="Username" [(ngModel)]="UserLoginobj.UserName"  />
+        </div>
+        <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password"  placeholder="Password" [(ngModel)]="UserLoginobj.SystemPassword" name="password"  />
+        </div>
+         <div *ngIf="errorMessageVisible" class="required"> * Username and Password are required . </div>
+
+          <!-- <a href="#">Forgot your password?</a> -->
+          <button >Sign In</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome to Alyah ERP</h1>
+            <p>Effortlessly manage your business processes and operations.</p>
+            <button class="ghost" id="signUp">Go to Website <i class="fa-solid fa-arrow-up-right-from-square"></i> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>
+        Copyright © 2024 TRION All rights Reserved
+       
+      </p>
+    </footer>
+  </body>
+</html>

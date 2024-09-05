@@ -1,0 +1,50 @@
+
+
+<div class="page-content">
+    <div class="container-fluid">
+    <div class="col-md-12 col-sm-12">
+        <div class="bodybox box green">
+            <div class="bodybox-title">
+              <div class="caption">
+                <span id="spn_lead">Lead Master</span>
+              </div> 
+            </div>
+            <div id="divAdd" class="bodybox-body table-wrapper">
+             
+              <div class="row pull-right"> 
+                <div class="col-md-12">   
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"  [routerLink]="['/AddServices']" id="addButton"><i class="fa fa-plus"></i> Add</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="onEditButtonClick($event)" id="editButton"><i class="fa fa-edit"></i> Edit</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+              <div class="row">
+              <table #dataTable class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>SI.No</th>
+                    <th>Service Name</th>
+                    <th>ETC</th>
+                    <th>CreatedOn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+           
+            
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+  

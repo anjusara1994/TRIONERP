@@ -1,0 +1,88 @@
+
+<form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()" class="row">
+    <div class="page-content">
+    <div class="container-fluid">
+    <div class="col-md-12 col-sm-12">
+        <div class="bodybox box green">
+            <div class="bodybox-title">
+              <div class="caption">
+                <span id="spn_lead">Service Master</span>
+              </div> 
+            </div>
+              <div id="divAdd" class="bodybox-body">
+               
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ServiceName">Service Name  <span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="AssignmentName" formControlName="AssignmentName"  class="form-control req" >
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ETC">ETC<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ETC" formControlName="ETC" class="form-control req" >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="scopeofwork">Scope of Work<span class="required" aria-required="true">*</span></label>
+                      <textarea  id="editor1"></textarea>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="Objectives">Objectives<span class="required" aria-required="true">*</span></label>
+                      <textarea  id="editor2"></textarea>
+                        </div> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="frespons">First Party Responsibility<span class="required" aria-required="true">*</span></label>
+                      <textarea  id="editor3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="Srespons">Second Party Responsibility<span class="required" aria-required="true">*</span></label>
+                      <textarea id="editor4"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="frespons">Limitations<span class="required" aria-required="true">*</span></label>
+                      <textarea  id="editor5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="frespons">Report<span class="required" aria-required="true">*</span></label>
+                      <textarea  id="editor6"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                      <label class="control-label" for="frespons">Other Matters<span class="required" aria-required="true">*</span></label>
+                      <textarea  id="editor7"></textarea>
+                        </div>
+                    </div>
+                  </div>
+          
+                  <div class="row mt-4 pull-right">
+                    <div class="col-md-12">
+                      <button type="button" (click)="navigateToServiceList()" class="btn btn-secondary">Cancel</button>
+                      &nbsp; &nbsp;
+                      <button type="submit" onclick="return CheckRequiredField('req');"class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+          
+            
+              </div>
+           </div>
+          </div>
+        </div>    
+    </div>
+    </form>
+    

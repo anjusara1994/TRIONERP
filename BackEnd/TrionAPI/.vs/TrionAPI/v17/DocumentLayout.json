@@ -1,0 +1,293 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\controllers\\dropdowndatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\dropdowndatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\controllers\\assignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\assignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\services\\dropdowndataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:services\\dropdowndataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\assignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\assignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\dropdowndata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\dropdowndata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\usermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\usermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\controllers\\screeningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\screeningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\customclasses\\customdatemodelbinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:customclasses\\customdatemodelbinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\trionapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:trionapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\trionerp\\backend\\trionapi\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Assignment.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Assignment.cs",
+              "RelativeDocumentMoniker": "Models\\Assignment.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Assignment.cs",
+              "RelativeToolTip": "Models\\Assignment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T16:24:09.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T07:08:24.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Lead.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Lead.cs",
+              "RelativeDocumentMoniker": "Models\\Lead.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Lead.cs",
+              "RelativeToolTip": "Models\\Lead.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAAACMAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T12:51:29.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Response.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Response.cs",
+              "RelativeDocumentMoniker": "Models\\Response.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Response.cs",
+              "RelativeToolTip": "Models\\Response.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T07:06:44.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DropdownDataService.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Services\\DropdownDataService.cs",
+              "RelativeDocumentMoniker": "Services\\DropdownDataService.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Services\\DropdownDataService.cs",
+              "RelativeToolTip": "Services\\DropdownDataService.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAApwGYAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-10T06:24:44.717Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CompanyController.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\CompanyController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CompanyController.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\CompanyController.cs",
+              "RelativeToolTip": "Controllers\\CompanyController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T10:09:57.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DropDownDataController.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\DropDownDataController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DropDownDataController.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\DropDownDataController.cs",
+              "RelativeToolTip": "Controllers\\DropDownDataController.cs",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAAAIkAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-10T02:34:25.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssignmentController.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\AssignmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AssignmentController.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\AssignmentController.cs",
+              "RelativeToolTip": "Controllers\\AssignmentController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFcAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T18:00:43.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DropdownData.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\DropdownData.cs",
+              "RelativeDocumentMoniker": "Models\\DropdownData.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\DropdownData.cs",
+              "RelativeToolTip": "Models\\DropdownData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T16:22:53.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserMenu.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\UserMenu.cs",
+              "RelativeDocumentMoniker": "Models\\UserMenu.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\UserMenu.cs",
+              "RelativeToolTip": "Models\\UserMenu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T15:39:25.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Company.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Company.cs",
+              "RelativeDocumentMoniker": "Models\\Company.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\Company.cs",
+              "RelativeToolTip": "Models\\Company.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA8AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T10:08:09.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ScreeningController.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\ScreeningController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ScreeningController.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Controllers\\ScreeningController.cs",
+              "RelativeToolTip": "Controllers\\ScreeningController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAApwCYAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T15:00:20.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAIAwwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T01:42:23.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CustomDateModelBinder.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\CustomClasses\\CustomDateModelBinder.cs",
+              "RelativeDocumentMoniker": "CustomClasses\\CustomDateModelBinder.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\CustomClasses\\CustomDateModelBinder.cs",
+              "RelativeToolTip": "CustomClasses\\CustomDateModelBinder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T16:49:38.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T01:55:41.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TrionAPI.csproj",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
+              "RelativeDocumentMoniker": "TrionAPI.csproj",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
+              "RelativeToolTip": "TrionAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-10T02:51:48.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Context\\AppDbContext.cs",
+              "ToolTip": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "Context\\AppDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T02:07:54.211Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

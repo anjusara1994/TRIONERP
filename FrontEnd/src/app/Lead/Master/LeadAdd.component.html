@@ -1,0 +1,246 @@
+
+<form [formGroup]="leadForm" (ngSubmit)="onSubmit()" class="row">
+<div class="page-content">
+<div class="container-fluid">
+<div class="col-md-12 col-sm-12">
+    <div class="bodybox box green">
+        <div class="bodybox-title">
+          <div class="caption">
+            <span id="spn_lead">Lead Master</span>
+          </div> 
+        </div>
+          <div id="divAdd" class="bodybox-body">
+           
+              
+              <div class="row">
+                
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="SalesPerson">Sales Person  <span class="required" aria-required="true">*</span></label>
+                
+                  <p-dropdown 
+                    [options]="salesPersons"
+                    formControlName="SalesPerson"
+                    optionLabel="name"
+                    [filter]="true"
+                    filterBy="Name" 
+                    [showClear]="true"
+                    class="req"
+                    placeholder="Choose an Option">
+                   
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ selectedOption.Name }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="item" let-SalesPerson>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ SalesPerson.Name }}</div>
+                        </div>
+                    </ng-template>
+                    </p-dropdown>
+                  </div>
+
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="Authority">Authority  <span class="required" aria-required="true">*</span></label>
+                  <p-dropdown 
+                    [options]="authorities"
+                    formControlName="Authority"
+                    optionLabel="name"
+                    [filter]="true"
+                    filterBy="Name" 
+                    [showClear]="true"
+                    class="req"
+                    placeholder="Choose an Option">
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ selectedOption.Name }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="item" let-Authority>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ Authority.Name }}</div>
+                        </div>
+                    </ng-template>
+                    </p-dropdown>
+
+                  </div>
+
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="Source">Source  <span class="required" aria-required="true">*</span></label>
+                  <p-dropdown 
+                    [options]="sources"
+                    formControlName="Source"
+                    optionLabel="name"
+                    [filter]="true"
+                    filterBy="Name" 
+                    [showClear]="true"
+                    class="req"
+                    placeholder="Choose an Option">
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ selectedOption.Name }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="item" let-Source>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ Source.Name }}</div>
+                        </div>
+                    </ng-template>
+                    </p-dropdown>
+                  </div>
+
+                </div>
+             
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="CompanyName">Company Name  <span class="required" aria-required="true">*</span></label>
+                  <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req" >
+                  </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="Landline">Landline  <span class="required" aria-required="true">*</span></label>
+                  <input type="text" id="Landline" formControlName="Landline" class="form-control req" >
+                    </div>
+                </div>
+                   <div class="col-md-3">
+                  
+                    <div class="form-group">
+                      <label class="control-label" for="ContactPerson">Contact Person  <span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ContactPerson" formControlName="ContactPerson" class="form-control req" >
+                    </div>
+                  </div>
+              
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="Designation">Designation  <span class="required" aria-required="true">*</span></label>
+                  <input type="text" id="Designation" formControlName="Designation" class="form-control req" >
+                  </div>
+                </div>
+      
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="MobileNumber">Mobile Number  <span class="required" aria-required="true">*</span></label>
+                  <input type="text" id="MobileNumber" formControlName="MobileNumber" class="form-control  req" >
+                </div>
+                    </div>
+
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="EmailId">Email Id  <span class="required" aria-required="true">*</span></label>
+                  <input type="email" id="EmailId" formControlName="EmailId" class="form-control emailid req" >
+                    </div>
+                </div>
+             
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="Address">Address <span class="required" aria-required="true">*</span> </label>
+                  <textarea id="Address" formControlName="Address" class="form-control req" rows="3"></textarea>
+                    </div>
+                </div>
+      
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="area">Area  <span class="required" aria-required="true">*</span></label>
+                  <p-dropdown 
+                    [options]="areas"
+                    formControlName="Area"
+                    optionLabel="name"
+                    [filter]="true"
+                    filterBy="Name" 
+                    [showClear]="true"
+                    class="req"
+                    placeholder="Choose an Option">
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ selectedOption.Name }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="item" let-Area>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ Area.Name }}</div>
+                        </div>
+                    </ng-template>
+                    </p-dropdown>
+                  </div>
+                  </div>
+      
+                <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="emirates">Emirates  <span class="required" aria-required="true">*</span></label>
+                  <p-dropdown 
+                  [options]="emirates"
+                  formControlName="Emirates"
+                  optionLabel="name"
+                  [filter]="true"
+                  filterBy="Name" 
+                  [showClear]="true"
+                  class="req"
+                  placeholder="Choose an Option">
+                  <ng-template pTemplate="selectedItem" let-selectedOption>
+                      <div class="flex align-items-center req gap-2">
+                      <div>{{ selectedOption.Name }}</div>
+                      </div>
+                  </ng-template>
+                  <ng-template pTemplate="item" let-Emirates>
+                      <div class="flex align-items-center gap-2">
+                      <div>{{ Emirates.Name }}</div>
+                      </div>
+                  </ng-template>
+                  </p-dropdown>
+                </div>
+                </div>
+                
+                <div class="col-md-3">
+                  <div class="form-group"> 
+                <label class="control-label" for="country">Country  <span class="required" aria-required="true">*</span></label>
+                <p-dropdown 
+                [options]="countries"
+                formControlName="Country"
+                optionLabel="name"
+                [filter]="true"
+                filterBy="Name" 
+                [showClear]="true"
+                class="req"
+                placeholder="Choose an Option">
+                <ng-template pTemplate="selectedItem" let-selectedOption>
+                    <div class="flex align-items-center gap-2">
+                    <div>{{ selectedOption.Name }}</div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="item" let-Country>
+                    <div class="flex align-items-center gap-2">
+                    <div>{{ Country.Name }}</div>
+                    </div>
+                </ng-template>
+                </p-dropdown>
+                </div>
+
+              </div>
+              </div>
+      
+              <div class="row mt-4 pull-right">
+                <div class="col-md-12">
+                  <button type="button" (click)="navigateToLeadList()" class="btn btn-secondary">Cancel</button>
+                  &nbsp; &nbsp;
+                  <button type="submit" onclick="return CheckRequiredField('req');"class="btn btn-primary">Submit</button>
+             
+                  
+                </div>
+              </div>
+      
+        
+          </div>
+       </div>
+      </div>
+    </div>    
+</div>
+</form>

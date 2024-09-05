@@ -1,0 +1,521 @@
+<div  class="container">
+<div id="printableDiv" class="col-md-12">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background: #fff">
+    <tr style="position: relative;">
+        <td><div class="hideheader">&nbsp;</div></td>
+    </tr>
+    <tr>
+        <td height="10" colspan="2"></td>
+    </tr>
+    <tr>
+        <td align="center" colspan="2">
+            <img src="../../../assets/images/companylogo.png" width="200" />
+        </td>
+    </tr>
+    <tr>
+        <td height="50" colspan="2"></td>
+    </tr>
+    <tr>
+        <td style="background: #f2f2f2; width: 100%; padding: 40px 0px 45px; text-align: center;" colspan="2">
+            <h1 style="color: #3f51b5; text-transform: uppercase; font-size: 50px; font-weight: 900; margin-top: 0px; margin-bottom: 0px;">
+                Engagement Letter
+            </h1>
+            <h2 style="color: #A7A9AC; text-transform: uppercase; font-size: 30px; font-weight: 600; margin-top: 14px; margin-bottom: 0px;">
+                {{ companyName }}
+                <span style="display: block; font-size: 20px;">
+                    {{ELID}}
+                </span>
+            </h2>
+        </td>
+    </tr>
+    <tr>
+        <td height="50" colspan="2"></td>
+    </tr>
+    <tr>
+        <td align="center">
+            <img src="../../../assets/images/companylogowhite.jpg" width="150" />
+        </td>
+    </tr>
+    <tr>
+        <td height="20" colspan="2"></td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p style="font-weight: bold; font-style: italic; font-size: 16px; color:#A7A9AC"> 
+               {{Address}}<br />
+                {{Email}} | {{Contact}}
+            </p>
+        </td>
+    </tr>
+    <tr style="position: relative;">
+        <td height="50">&nbsp;</td>
+    </tr>
+</table>
+<div style="page-break-after:always"></div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td valign="top">
+            <p>To, the <strong>{{ SignatoryName }}</strong> of 
+                <strong>{{ ClientName }}</strong><br />
+                {{ClientAddress}}
+            </p>
+            <p style="font-weight: 600;">{{ELDate}} </p>
+            <p style="margin-top: 35px;">Dear {{ SignatoryName}} </p>
+            <p style="margin-top: 20px;">
+                This is with reference to your letter dated <strong>{{ELDate}}</strong> confirming our appointment as the 
+                <strong> Consultants </strong> of <strong>{{ClientName}}</strong>.
+                As per your request, our charter of duties will entail the following for <strong>{{ClientName}}</strong> for the period mentioned below:
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" height="30">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center" valign="top">
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <table class="tablehtml">
+                            <tr class="tablehtmltrheader">
+                                <td class="tablehtmltd"  valign="top"><div align="center"><strong>Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Type</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Period</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>ETC</strong></div></td>
+                            </tr>
+                            <tr *ngFor="let item of assignmentList">
+                               
+                                <td class="tablehtmltd" align="center">{{ item.AssignmentName }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.Mode }}</td>
+                                <td  class="tablehtmltd" align="center">{{ item.Period }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.ETC }}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" height="30">&nbsp;</td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <p>We are pleased to confirm our acceptance and our understanding of this Engagement by means of this letter. 
+                The undersigned Parties entering into this agreement are bound by the duty of trust & utmost good faith with respect to their absolute honest intentions, sources, and contacts.
+            </p>
+            <p>This is drawn up between:</p>
+            <p><strong>{{companyName}}</strong>, lawfully incorporated and operating under the laws of the United Arab Emirates, hereafter known as First Party.</p>
+            <p><strong>AND</strong></p>
+            <p><strong>{{ClientName}}</strong>, whose place of business is located at <strong>{{ClientAddress}}</strong>
+                duly represented by <strong>{{ClientConcernpersonName}}</strong>, hereafter known as Second Party.
+            </p>
+            <p>
+                The agreement ("the Agreement") between the First and Second Parties, who will hereafter be referred to collectively as the "Parties," 
+                is made up of the provisions set forth in the Letter of Engagement,
+                any written modifications made afterwards in this regard, and these Terms of Engagement.
+            </p>
+        </td>
+    </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td valign="top">
+              <!--Scope of work-->
+             <span style="font-size: 16px;font-weight: bold;"><u>Scope of work</u></span>
+            <!--<div *ngFor="let scope of assignmentList">
+              <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+              <p [innerHTML]="scope.ScopeOfWork"></p>
+            </div> -->
+            <div *ngFor="let scope of assignmentList">
+                <ng-container *ngIf="scope.ScopeOfWork">
+                  <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                  <p [innerHTML]="scope.ScopeOfWork"></p>
+                </ng-container>
+              </div>
+            <!--FIRST-PARTY RESPONSIBILITY-->
+            <p style='font-size: 16px;'><strong><u>First Party Responsibility</u></strong></p>
+            <ul>
+                <li>
+                    The First Party remains committed to providing high-quality services to its clients. If dissatisfied with the services rendered by the First Party,
+                    the Second Party should apprise the Client Engagement Manager about any shortfalls and scope for improvement.
+                </li>
+                <li>The First Party will provide the assignments to the Second Party as an independent service provider, not as an employee, agent, partner, or joint venture.</li>
+                <li>The First Party will provide the agreed services with professional due care and competence and deliver the outcome within the agreed timeframe.</li>
+                <li>It is not guaranteed that First Party has determined or forecast future events or circumstances by any advice, opinion, statement of expectation, 
+                    forecast, or suggestion provided by First Party as part of the Services.</li>
+            </ul>
+            <!-- <div *ngFor="let scope of assignmentList">
+                <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                <p [innerHTML]="scope.FirstPartyResponsibility"></p>
+              </div> -->
+              <div *ngFor="let scope of assignmentList">
+                <ng-container *ngIf="scope.FirstPartyResponsibility">
+                  <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                  <p [innerHTML]="scope.FirstPartyResponsibility"></p>
+                </ng-container>
+              </div>
+            <!--SECOND-PARTY RESPONSIBILITY-->
+            <p style='font-size: 16px;'><strong><u>Second Party Responsibility</u></strong></p>
+            <ul>
+                <li>
+                    The Second Party should provide or facilitate to the First Party promptly the information, resources, and assistance, including access to records, systems, premises and people,
+                    that they reasonably require to perform their work.
+                </li>
+                <li>To the best of the knowledge of the Second Party, all information provided by the Second Party or on their behalf should be accurate and complete in all material respects. 
+                    Providing such information to the First Party will not infringe any copyright or other third-Party rights.</li>
+                <li>The Second Party shall be responsible for their personnel's compliance with any obligations under this Agreement.</li>
+                <li>The Second Party shall continuously keep the First Party informed of any circumstances that may affect the Engagement.</li>
+            </ul>
+            <div *ngFor="let scope of assignmentList">
+                <ng-container *ngIf="scope.SecondPartyResponsibility">
+                  <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                  <p [innerHTML]="scope.SecondPartyResponsibility"></p>
+                </ng-container>
+              </div>
+
+            <!--Limitations-->
+            <p style='font-size: 16px;'><strong><u>Limitations</u></strong></p>
+            <ul>
+                <li>
+                    Our period of Engagement is limited to the duration of the assignment(s) indicated above.
+                </li>
+                <li>Please be advised that the Estimated Time of Completion provided is subject upon receiving the complete 
+                    set of requisite documents and information essential for the assignment. Tasks to be performed by AMCA will be 
+                    concluded within this time frame. However, it is important to acknowledge that this excludes the duration allotted 
+                    for Authority Approvals in instances necessitating external approval.
+                </li>
+                <li>In reference to the above-mentioned objectives and scope of work, it is agreed that the First Party will not be held liable for any discrepancies, 
+                    losses, or damages related to third-party reliance on the work performed under this Engagement.</li>
+            </ul>
+            <div *ngFor="let scope of assignmentList">
+                <ng-container *ngIf="scope.Limitations">
+                  <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                  <p [innerHTML]="scope.Limitations"></p>
+                </ng-container>
+              </div>
+            <!--Report-->
+                <p style='font-size: 16px;'><strong><u>Report</u></strong></p>
+                <ul>
+                                <li>
+                                                Any assessments, information, advice, recommendations, or other content of any reports, presentations, or other communications the First Party provides under this agreement ("Reports"), other than the the Second Party's Information,
+                                                are for the second Party’s internal use only (consistent with the purpose of the Engagement).
+                                </li>
+                                <li>The Second Party may not rely on any draft Report. The First Party shall not be required to
+                                                update any final Report for circumstances of which the First Party became aware or events occurring after its delivery.</li>
+                                <li>The Second Party may not disclose a Report (or any portion or summary of a Report) externally (including to the Second Party’s affiliates) or 
+                                                refer to the first Party in connection with the Engagement, except:
+                                                <ul>
+                                                    <li>to the Second Party’s lawyers (subject to these disclosure restrictions), who may review it only to give the Second Party advice relating to the Engagement,</li>
+                                                    <li>to the extent, and for the purposes, required by the law (of which the Second Party will promptly notify the First Party),</li>
+                                                    <li>To other persons, of which the Second Party will promptly notify the First Party.</li>
+                                                </ul>
+                                </li>
+                                <li>If the Second Party is permitted to disclose a Report (or a portion thereof) externally, the Second Party shall not alter, edit, or modify it from the form provided by the First Party.</li>
+                                <li>The Second Party shall not disclose First Party’s ideas, concepts, models, information, know-how, methodology, etc</li>
+                </ul>
+                <div *ngFor="let scope of assignmentList">
+                    <ng-container *ngIf="scope.Report">
+                      <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                      <p [innerHTML]="scope.Report"></p>
+                    </ng-container>
+                  </div>
+
+            	<!--Other Matter-->
+				<p style='font-size: 16px;'><strong><u>Other Matters</u></strong></p>
+				<ul>
+								<li>
+									First Party may involve specialists and staff from their affiliated network firms to perform certain specific procedures during the course of this Engagement
+								</li>
+								<li>The Second Party, for Operation, will not independently approach & try to influence any personnel designated or assigned by the First Party.</li>
+				</ul>
+                <div *ngFor="let scope of assignmentList">
+                    <ng-container *ngIf="scope.OtherMatters">
+                      <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
+                      <p [innerHTML]="scope.OtherMatters"></p>
+                    </ng-container>
+                  </div>
+
+				<p style='font-size: 16px;'><strong><u>Conflict of Interest</u></strong></p>
+				<ul>
+								<li>
+									It is the practice of the First Party to identify for conflicts of interest before acceptance of Engagement. However, the First Party offers a variety of professional services to customers, and while it will make a reasonable effort to do so,
+									it cannot guarantee rapid identification of all circumstances in which a conflict with the client's interests may exist.
+								</li>
+								<li>Should the Second Party be or become aware of possible conflicts of interest that may affect the Engagement, the First Party urges that the Second Party notify the First Party thereof without undue delay.</li>
+								<li>The First Party will discuss and agree on such processes with the Second Party if a potential or actual conflict of interest is found and the First Party feels
+									that the client's interests can be effectively protected by the application of required procedures.</li>
+				</ul>
+
+				<!-- CONFIDENTIALITY -->
+				<p style='font-size: 16px;'><strong><u>Confidentiality</u></strong></p>
+				<ul>
+								<li>
+									The First Party agrees that in performing their obligation under this agreement, they shall comply with all applicable laws, including data privacy and protection laws. The First Party further confirms that they have proper internal controls in place 
+									for the protection of client data and maintenance of the confidentiality of all information disclosed to them by the Second Party.
+								</li>
+								<li>Both Parties agree to be legally bound hereby and expressly agree that no one will attempt, directly or indirectly, 
+									to contact the other Parties’ contacts or affiliates on matters of subject business or contact or negotiate with a confidential source or make use 
+									of any confidential information provided by any of the parties herein, except with the express consent of the concerned Party.</li>
+								<li>Both Parties agree to hold all confidential or proprietary information, business plans, analyses, compilations, studies,
+									slides, and copies of slides or other arrangements proposed or in effect with any outside source, whether oral or written 
+									(collectively, the “Confidential Information”) in trust and as confidential and each Party agrees that the Confidential information shall be used only
+									for the purpose of proposed subject business and shall not be used for any other purpose or disclosed to any outside source under any circumstances. </li>
+				</ul>
+
+				<!-- TERMINATION -->
+				<p style='font-size: 16px;'><strong><u>Termination</u></strong></p>
+				<ul>
+								<li>
+									If the Second Party wishes to back out after signing the contract, no refund shall be payable for the advance already paid.
+								</li>
+								<li>The Second Party can terminate this Agreement at any time by providing written notice 90 days prior to the termination date, failing which the Second Party will be liable to pay 30% of the total amount of the Agreement as a penalty. </li>
+								<li>In the event of termination, payments will be made to the First Party for all work performed up to the date of termination. The First Party shall return all the documents. </li>
+								<li>If it is determined that (a) a governmental, regulatory, professional, or entity having the force of law has introduced a new or modified an existing law, rule, regulation, interpretation, or decision, the result of which would make the First Party’s performance of any part of the Engagement illegal or otherwise unlawful or in conflict, the First Party may terminate the Engagement in wholly or partially with immediate effect upon written notice to the Second Party.</li>
+								<li>The Second Party agrees to accept responsibility for any effect on the services due to any misconduct detected on its part.</li>
+								<li>This Engagement will be terminated automatically once the services have been performed, applicable to all one-time assignments.</li>
+				</ul>
+
+				<!-- RENEWAL -->
+				<p style='font-size: 16px;'><strong><u>Renewal</u></strong></p>
+				<ul>
+								<li>
+									The terms of this Agreement will begin on the date of this Engagement and will remain in force and effect <br /> until 
+									<strong> 5 days </strong> The effective date of this agreement shall be the date first signed by both parties.
+								</li>
+								<li>In case both Parties are unable to agree on any change in terms of the engagement letter and /or is not permitted to continue as per the original terms, either Party may withdraw from the Engagement and report the circumstances of the case to the appointing authority. </li>
+								<li>This Agreement will be renewed automatically unless cancelled by either Party by written notice, applicable to all recurring assignments.</li>
+				</ul>
+            <!--Fees and Payment Terms-->
+            <p style='font-size: 16px; margin-top: 0px;'><strong><u>Fee Structure</u></strong></p>
+            <ul>
+                            <li>
+                                The fee for the Assignments for the periods as agreed, mentioned in the Fee Structure, have been fixed, plus any out-of-pocket expenses and indirect taxes as agreed between both Parties. The First Party will notify the Second Party promptly of any circumstances the First Party encounter that could affect the estimate of fees and discuss with the Second Party of any additional fees, as necessary.
+                            </li>
+                            <li>The fee mentioned in the Fee Structure will change if the Scope of Work changes. </li>
+                            <li>Advance payment is mandatory to proceed with the assignment. </li>
+                            <li>The amount paid is in lieu of professional assignments provided by the First Party and, therefore, non-refundable, non-cancellable & non-modifiable under any circumstances.</li>
+                            <li>The fee mentioned in the Fee Structure is valid only for 30 days. The Second Party is expected to sign the engagement letter within the prescribed period.</li>
+            </ul>
+           
+           
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center" valign="top">
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <table class="tablehtml">
+                            <tr class="tablehtmltrheader">
+                                <td class="tablehtmltd"  valign="top"><div align="center"><strong>Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Period of Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Type of Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Professional Fee</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAt Rate</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAt Amount</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Amount</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Advance %</strong></div></td>
+                            </tr>
+                            <tr *ngFor="let item of assignmentList">
+                               
+                                <td class="tablehtmltd" align="center">{{ item.AssignmentName }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.Period }}</td>
+                                <td  class="tablehtmltd" align="center">{{ item.Mode }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.ProfessionalFee }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.VatPercent }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.VatAmount }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.NetAmount }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.AdvancePercent }}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="right" valign="top">
+            <table width="800" border="0" cellpadding="0" cellspacing="0" style="margin: 0">
+                <tr>
+                    <td align="left" valign="top" >
+                        <table class="tabletd">
+                            <tr>
+                                <td height="10">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-size:12px;">Amount in words</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong><strong>AED : {{ totalNetAmount | numberToWords }}</strong></strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="right" width="250">
+                        <table class="tabletd">
+                            <tr>
+                                <td colspan="3" height="10">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 85%">Total Professional Fee:</td>
+                                <td style="width: 5%">&nbsp;</td>
+                                <td style="width: 10%" align="right"><strong>{{totalProfessionalFee}}</strong></td>
+                            </tr>
+                           
+                            <tr>
+                                <td style="width: 85%">Total VAT Amount:</td>
+                                <td style="width: 5%">&nbsp;</td>
+                                <td style="width: 10%" align="right"><strong>{{totalVatAmount}}</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" height="10">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+</tr>
+<tr>
+        <td colspan="2" align="right">
+            <table width="300" border="0" cellpadding="0" cellspacing="0" style="margin: 0">
+                <tr class="pMargin">
+                    <td align="right" style="background: #2143ff; height: 30px; font-size:12px; padding: 10px; color: #fff;">
+                        Total Amount (AED)*
+                                    <span style="display: block; font-size: 20px; font-weight: bold; margin-top: 5px;">{{totalNetAmount}}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+</tr>
+   
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <div>
+          <p style="margin-top: 20px;">
+            <strong>
+              Both Parties must sign, stamp, and exchange the attached copy of this letter to indicate their acknowledgment and agreement with the Assignments mentioned above, including fee structure and respective responsibilities.
+            </strong>
+          </p>
+        </div>
+  
+        <table width="100%" border="0" cellpadding="8" cellspacing="0" style="margin-top:10px; font-size: 14px;">
+          <tr>
+            <td width="50%" valign="top">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p>
+                      <strong>First Party</strong>
+                      <br />
+                     
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                  
+                  </td>
+                  <td>
+                    <div>
+                     
+                     
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p style="font-size: 12px;">
+                      <strong><em>(Sign and Company Seal)</em></strong>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="40%">Name</td>
+                  <td width="5%">:</td>
+                  <td width="55%"></td>
+                </tr>
+                <tr>
+                  <td width="40%">Designation</td>
+                  <td width="5%">:</td>
+                  <td width="55%">Manager</td>
+                </tr>
+                <tr>
+                  <td>Date</td>
+                  <td>:</td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+            <td width="3%">&nbsp;</td>
+            <td width="47%" style="padding-right: 0px;" valign="top">
+              <div style="display: flex; width: 100%;">
+                <div style="width: 100%;">
+                  <p>
+                    <strong>Second Party</strong>
+                    <br />
+                   
+                  </p>
+                </div>
+                
+              </div>
+              <div style="height: 146px; display: flex">
+                <div style="width: 100%">
+                 
+                </div>
+                <div style="width: 100%">
+                 
+                 
+                </div>
+              </div>
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p style="font-size: 12px;">
+                      <strong><em>()</em></strong>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="40%">Name</td>
+                  <td width="5%">:</td>
+                  <td width="55%"></td>
+                </tr>
+                <tr>
+                  <td width="40%">Designation</td>
+                  <td width="5%">:</td>
+                  <td width="55%"></td>
+                </tr>
+                <tr>
+                  <td width="40%">Date</td>
+                  <td width="5%">:</td>
+                  <td width="55%"></td>
+                </tr>
+               
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: center; margin-top: 50px;">
+                Thank you for choosing ALYAH.<br />
+                We look forward to working with you.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <!-- <img src="assets/images/thankYou.png" width="150" /> -->
+        </td>
+    </tr>
+  </table>
+ 
+</div>
+<button (click)="printDiv('printableDiv')">Print</button>
+</div>

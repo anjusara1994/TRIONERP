@@ -1,0 +1,446 @@
+
+
+<form [formGroup]="ELForm"  class="row">
+   <div class="page-content">
+    <div class="container-fluid">
+    <div class="col-md-12 col-sm-12">
+        <div class="bodybox box green">
+            <div class="bodybox-title">
+              <div class="caption">
+                <span>Engagement Letter</span>
+              </div> 
+            </div>
+              <div id="divAdd" class="bodybox-body">
+<!--                
+            <div class="row">
+                <div *ngIf="isLoading" class="loading-overlay">
+                    <div class="loading-spinner">
+                      <p>Loading data...</p>
+                      <div class="spinner"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>     -->
+                  <div class="row">
+                       
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <span class="divHeaderText">License Details</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="Client">Client Name  <span class="required" aria-required="true">*</span></label>
+                      <p-dropdown 
+                        [options]="clients"
+                        formControlName="Client"
+                        optionLabel="name"
+                        [filter]="true"
+                        filterBy="Name"
+                        (onFilter)="onSearch($event, 'clients')"
+                        (onChange)="onClientChange($event)" 
+                        [showClear]="true"
+                        class="req reqa"
+                        placeholder="Choose an Option"
+                        [loading]="isLoading">
+                        <ng-template pTemplate="selectedItem" let-selectedOption>
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ selectedOption.Name }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="item" let-client>
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ client.Name }}</div>
+                            </div>
+                        </ng-template>
+                        </p-dropdown>
+
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="TRNNo">TRN No  <span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="TRNNo" formControlName="TRNNo" class="form-control req reqa" >
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="LicenseNo">License No  <span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="LicenseNo" formControlName="LicenseNo" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="divHeaderText">Signing Authority</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="SignatoryName">Name<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="SignatoryName" formControlName="SignatoryName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="SignatoryDesignation">Designation<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="SignatoryDesignation" formControlName="SignatoryDesignation" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="SignatoryContactNo">Contact No  <span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="SignatoryContactNo" formControlName="SignatoryContactNo" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="SignatoryEmail">Email Id<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="SignatoryEmail" formControlName="SignatoryEmail" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="divHeaderText">Contact person</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ConcernpersonName">Name<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ConcernpersonName" formControlName="ConcernpersonName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ConcernpersonDesignation">Designation<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ConcernpersonDesignation" formControlName="ConcernpersonDesignation" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ConcernpersonContactNo">Contact No.<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ConcernpersonContactNo" formControlName="ConcernpersonContactNo" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ConcernpersonEmail">Email Id<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ConcernpersonEmail" formControlName="ConcernpersonEmail" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="divHeaderText">Address</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Unit No<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Floor<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Tower<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Emirates<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Area<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Country<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="divHeaderText">Consultant</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Name<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req" >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="divHeaderText">Assignment</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="Assignment">Assignment<span class="required" aria-required="true">*</span></label>
+                      <p-dropdown 
+                        [options]="Assignments"
+                        formControlName="Assignment"
+                        optionLabel="name"
+                        [filter]="true"
+                        filterBy="Name"
+                        (onFilter)="onSearch($event, 'assignments')"
+                        [showClear]="true"
+                        class="reqa"
+                        placeholder="Choose an Option"
+                        [loading]="isLoading">
+                        <ng-template pTemplate="selectedItem" let-selectedOption>
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ selectedOption.Name }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="item" let-Assignment>
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ Assignment.Name }}</div>
+                            </div>
+                        </ng-template>
+                        </p-dropdown>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Period<span class="required" aria-required="true">* </span></label>
+                            <div class="input-group date-picker input-daterange" data-date-format="dd-M-yyyy">
+                                <input type="date" id="StartDate" formControlName="StartDate" class="form-control reqa" >
+                                <span class="input-group-addon"> to </span>
+                                <input type="date" id="EndDate" formControlName="EndDate" class="form-control reqa" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="PeriodType">Type<span class="required" aria-required="true">*</span></label>
+                     
+                        <p-dropdown 
+                        [options]="periodtypes"
+                        id="ddlTYPE_OF_ASSIGNMENT"
+                        formControlName="PeriodType"
+                        optionLabel="Period"
+                        [filter]="true"
+                        filterBy="Name" 
+                        [showClear]="true"
+                        class=" reqa"
+                        placeholder="Choose an Option">
+                        <ng-template pTemplate="selectedItem" let-selectedOption>
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ selectedOption.Name }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="item" let-PeriodType>
+                            <div class="flex align-items-center gap-2">
+                            <div>{{ PeriodType.Name }}</div>
+                            </div>
+                        </ng-template>
+                        </p-dropdown>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="control-label" for="mode">Mode<span class="required" aria-required="true">*</span></label>
+                          <select id="mode" formControlName="mode" class="form-control reqa">
+                            <option selected value="charged">Charged</option>
+                            <option value="complimentary">Complimentary</option>
+                            <option value="discounted">Discounted</option>
+                          </select>
+                        </div>
+                      </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="ProfessionalFee">Professional Fee<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="ProfessionalFee" formControlName="ProfessionalFee" class="form-control NumberWithOneDot reqa" (keyup)="calculateValues()"  >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="PeriodValue">Period Value<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="PeriodValue" formControlName="PeriodValue" class="form-control NumberWithOneDot reqa" (keyup)="calculateValues()" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="TotalAmount">Total Amount<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="TotalAmount" formControlName="TotalAmount" class="form-control NumberWithOneDot reqa" >
+                      </div>
+                    </div>
+                    <div style="display:none;" class="col-md-3">
+                      <div class="form-group"> 
+                    <label class="control-label" for="DiscountPercent">Discount Percent<span class="required" aria-required="true">*</span></label>
+                    <input type="text" id="DiscountPercent" formControlName="DiscountPercent" class="form-control NumberWithOneDot reqa"  (keyup)="calculateValues()" >
+                    </div>
+                  </div>
+                  <div  style="display:none;"  class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="DiscountAmount">Discount Amount<span class="required" aria-required="true">*</span></label>
+                  <input type="text" id="DiscountAmount" formControlName="DiscountAmount" class="form-control NumberWithOneDot reqa"  (keyup)="calculateValues()">
+                  </div>
+                </div>
+                  <div style="display:none;" class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="ActualAmount">Actual Amount<span class="required" aria-required="true">*</span></label>
+                  <input type="text" id="ActualAmount" formControlName="ActualAmount" class="form-control NumberWithOneDot reqa" >
+                  </div>
+                </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="CompanyName">Vat%<span class="required" aria-required="true">*</span></label>
+                      <select id="vatpercent" formControlName="vatpercent" class="form-control reqa"  (change)="calculateValues()">
+                        <option selected value="0">0%</option>
+                        <option value="5">5%</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="vatamnt">VAT Amount<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="vatamnt" formControlName="vatamnt" class="form-control NumberWithOneDot reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="Netamnt">Amount Inc. VAT<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="Netamnt" formControlName="Netamnt" class="form-control reqa" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="AuthorityFee">Authority Fee<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="AuthorityFee" formControlName="AuthorityFee" class="form-control reqa" (keyup)="calculateValues()" >
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="Advancepercent">Advance %<span class="required" aria-required="true">*</span></label>
+                      <select id="Advancepercent" formControlName="Advancepercent" class="form-control reqa"  (change)="calculateValues()">
+                        <option selected value="0">0%</option>
+                        <option value="5">5%</option>
+                        <option selected value="10">10%</option>
+                        <option selected value="25">25%</option>
+                        <option selected value="50">50%</option>
+                        <option selected value="75">75%</option>
+                        <option selected value="100">100%</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"> 
+                      <label class="control-label" for="AdvanceAmnt">Advance Amount<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="AdvanceAmnt" formControlName="AdvanceAmnt" class="form-control reqa" (keyup)="calculateValues()" >
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-12">
+                      <table id="tblPeriods" class="table">
+                          <thead>
+                              <tr>
+                                  <th>Period From</th>
+                                  <th>Period To</th>
+                                  <th>Internal Due Date</th>
+                                  <th>External Due Date</th>
+                                  <th>Amount</th>
+                                  <th>Discount%</th>
+                                  <th>Discount Amount</th>
+                                  <th>Commission%</th>
+                                  <th>Commission Amount</th>
+                                  <th>Actual Amount</th>
+                                  <th>VAT%</th>
+                                  <th>VAT Amount</th>
+                                  <th>Authority Fee</th>
+                                  <th>Total Amount Inc VAT</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                      </table>
+                  </div> -->
+                    <div class="col-md-3">
+                      <div class="form-group m-top-30"> 
+                        <button type="submit" (click)="validateAndSubmit()" class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</button>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row ">
+                    <div class="col-md-12">
+                      <table #dataTable class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>SI.No</th>
+                          <th>Assignment</th>
+                          <th>Period</th>
+                          <th>Type</th>
+                          <th>Mode</th>
+                          <th>Professional Fee</th>
+                          <th>Period Value</th>
+                          <th>Total Amount</th>
+                          <th>VAT %</th>
+                          <th>VAT Amount</th>
+                          <th>Amount Inc. VAT</th>
+                          <th>Authority Fee</th>
+                          <th>Advance %</th>
+                          <th>Advance Amount</th>
+                          <th>Created On</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                  <div  class="row mt-4">
+                    <div class="col-md-12">
+                      <button type="submit" style="display:none;" id="btncreateEL" (click)="handleButtonClick()" class="btn btn-warning">Create Engagement Letter</button>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col-md-12">
+                <span class="divHeaderText">Engagement Letter</span>
+            </div>
+
+            <div class="row ">
+              <div class="col-md-12">
+                <table #dataTableEL class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>SI.No</th>
+                    <th>ID</th>
+                    <th>Is Sent?</th>
+                    <th>Assignments</th>
+                    <th>Gross Amnt</th>
+                    <th>Vat Amnt</th>
+                    <th>Authority Fee</th>
+                    <th>Net Amnt</th>
+                    <th>Advance Amnt</th>
+                    <th>Created</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+            </div>
+            <div class="row mt-4 pull-right">
+              <div class="col-md-12">
+                <button type="button"  class="btn btn-secondary">Cancel</button>
+                &nbsp; &nbsp;
+                <button type="submit" onclick="return CheckRequiredField('req');"class="btn btn-primary">Save</button>
+              </div>
+            </div>
+    
+      
+        </div>
+           </div>
+          </div>
+        </div>    
+    </div>
+</div>
+</form>   
