@@ -27,6 +27,9 @@ export class CreateELComponent implements OnInit, AfterViewInit {
     tableData: any[] = []; 
     queryParams: any[] = [];
     dtOptions: any = {}; 
+    areas:{ ID: number; Name: string }[] = [];
+    countries:{ ID: number; Name: string }[] = [];
+    emirates:{ ID: number; Name: string }[] = [];
 
     constructor(private fb: FormBuilder, private router: Router,private dropDownService: DropDownServiceService,private DataServices: DataServices) { }
 
@@ -62,6 +65,12 @@ export class CreateELComponent implements OnInit, AfterViewInit {
             AuthorityFee: ['0.00'],
             Advancepercent: ['0'],
             AdvanceAmnt: ['0.00'],
+            Area: [''],
+            Country: [''],
+            Emirates: [''],
+            AddUnitNo:[''],
+            AddFloor:[''],
+            AddTower:[''],
           });
           this.queryParams = [
             { param: 'Opcode', value: '2', op: 's' },
@@ -71,6 +80,16 @@ export class CreateELComponent implements OnInit, AfterViewInit {
         this.dropDownService.getPeriodTypes(data => {
         this.periodtypes = data;
         });
+        this.dropDownService.getArea(data => {
+          this.areas = data;
+        });
+        this.dropDownService.getCountry(data => {
+          this.countries = data;
+        });
+
+        this.dropDownService.getEmirates(data => {
+          this.emirates = data;
+        })
 
         this.loadClients();
         this.loadAssignments();
@@ -146,6 +165,12 @@ export class CreateELComponent implements OnInit, AfterViewInit {
             { title: 'Authority Fee', data: 'AuthorityFee' },
             { title: 'Advance Percent', data: 'AdvancePercent' },
             { title: 'Advance Amount', data: 'AdvanceAmount' },
+            { title: 'EL ID', data: 'ELID' },
+            {
+              title: 'ELAutoId',
+              data: 'ELAutoId',
+              visible: false
+            },
             {
               title: 'CreatedOn',
               data: null,
@@ -156,11 +181,11 @@ export class CreateELComponent implements OnInit, AfterViewInit {
               }
             },
             {
-              title: 'Delete',
+              title: 'Action',
               data: 'Autoid',
               render: (data: any, type: any, row: any) => {
                 
-                return ` <button type="button" class="btn btn-xs bgRed delete-btn" data-id="${row.Autoid}"><i class="fa fa-trash"></i></button>`;
+                return ` <button type="button" title="Delete Assignment" class="btn btn-xs bgRed delete-btn" data-elid="${row.ELAutoId}" data-id="${row.Autoid}"><i class="fa fa-trash"></i></button>`;
               }
             }
           ]
@@ -169,7 +194,14 @@ export class CreateELComponent implements OnInit, AfterViewInit {
        
         $(this.table.nativeElement).on('click', '.delete-btn', (event: JQuery.TriggeredEvent) => {
           const id = $(event.currentTarget).data('id');
-          this.confirmDelete(id);
+          const elAutoid = $(event.currentTarget).data('elid');
+    debugger
+            if (elAutoid) {
+              ShowWarning('This assignment cannot be deleted as an engagement letter has already been generated. Please delete the engagement letter first.');
+            } else {
+              this.confirmDelete(id);
+            }
+          
         });
 
         $(this.table.nativeElement).on('change', '.row-checkbox', () => {
@@ -219,7 +251,7 @@ export class CreateELComponent implements OnInit, AfterViewInit {
         const Clientid = this.ELForm.value.Client?.ID;
         const selectedIds = Array.from(document.querySelectorAll('.row-checkbox:checked')).map(checkbox => (checkbox as HTMLInputElement).value);
         if (selectedIds.length === 0) {
-            alert('Please select at least one checkbox.');
+          ShowWarning('Please select at least one checkbox.');
             return;
         } else {
             this.DataServices.createEL(selectedIds,Clientid).subscribe({
@@ -250,6 +282,15 @@ export class CreateELComponent implements OnInit, AfterViewInit {
           .subscribe(data => {
             if (data && data.length > 0) {
               const clientData = data[0];
+              const selectedEmirates = this.emirates.find(
+                sp => sp.ID === clientData.Emirates
+              );
+              const selectedCountry = this.countries.find(
+                sp => sp.ID === clientData.Country
+              );
+              const selectedArea = this.areas.find(
+                sp => sp.ID === clientData.Area
+              );
               this.ELForm.patchValue({
                 TRNNo: clientData.TRNNo,
                 LicenseNo:clientData.LicenseNo,
@@ -260,7 +301,13 @@ export class CreateELComponent implements OnInit, AfterViewInit {
                 ConcernpersonName:clientData.ConcernpersonName,
                 ConcernpersonDesignation:clientData.ConcernpersonDesignation,
                 ConcernpersonContactNo:clientData.ConcernpersonContactNo,
-                ConcernpersonEmail:clientData.ConcernpersonEmail
+                ConcernpersonEmail:clientData.ConcernpersonEmail,
+                Emirates : selectedEmirates || null,
+                Country  : selectedCountry || null,
+                Area  : selectedArea || null,
+                AddUnitNo : clientData.AddUnitNo,
+                AddFloor : clientData.AddFloor,
+                AddTower : clientData.AddTower,
               });
             }
           });
@@ -315,7 +362,13 @@ export class CreateELComponent implements OnInit, AfterViewInit {
             ConcernpersonName: AssignmentData.ConcernpersonName || '',
             ConcernpersonDesignation: AssignmentData.ConcernpersonDesignation || '',
             ConcernpersonContactNo: AssignmentData.ConcernpersonContactNo || '',
-            ConcernpersonEmail: AssignmentData.ConcernpersonEmail || ''
+            ConcernpersonEmail: AssignmentData.ConcernpersonEmail || '',
+            Area: AssignmentData.Area?.ID || '',
+            Country: AssignmentData.Country?.ID || '',
+            Emirates: AssignmentData.Emirates?.ID || '',
+            AddUnitNo : AssignmentData.AddUnitNo || '',
+            AddFloor : AssignmentData.AddFloor || '',
+            AddTower : AssignmentData.AddTower || '',
         };
        
         this.DataServices.submitAssignment(transformedAssignmentData).subscribe({
@@ -472,7 +525,9 @@ export class CreateELComponent implements OnInit, AfterViewInit {
               data: 'Autoid',
               render: (data: any, type: any, row: any) => {
                 const clientAutoid = row.ClientAutoid;
-                return ` <button type="button" class="btn btn-xs bgGreen view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-eye"></i></button>`;
+                return ` <button type="button" title="Download Engagement Letter"  class="btn btn-xs bgOrange view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-cloud-arrow-down"></i></button> 
+                <button type="button" title="Download Quotation"  class="btn btn-xs bgOrange view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-newspaper"></i></button>
+                <button type="button" title="Delete this"  class="btn btn-xs bgRed view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-trash"></i></button>`;
               }
             }
           ]

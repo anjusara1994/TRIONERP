@@ -59,7 +59,12 @@ namespace TrionAPI.Models
             public string? Limitations { get; set; }
             public string? Report { get; set; }
             public string? OtherMatters { get; set; }
-             public string? Objectives { get; set; }
+            public string? Objectives { get; set; }
+
+            public int? Area { get; set; }
+            public int? Emirates { get; set; }
+            public int? Country { get; set; }
+
 
     }
 

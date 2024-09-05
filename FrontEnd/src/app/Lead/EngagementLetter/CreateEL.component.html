@@ -130,23 +130,23 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group"> 
-                      <label class="control-label" for="CompanyName">Unit No<span class="required" aria-required="true">*</span></label>
-                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      <label class="control-label" for="AddUnitNo">Unit No<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="AddUnitNo" formControlName="AddUnitNo" class="form-control req reqa" >
                       </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group"> 
-                      <label class="control-label" for="CompanyName">Floor<span class="required" aria-required="true">*</span></label>
-                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      <label class="control-label" for="AddFloor">Floor<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="AddFloor" formControlName="AddFloor" class="form-control req reqa" >
                       </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group"> 
-                      <label class="control-label" for="CompanyName">Tower<span class="required" aria-required="true">*</span></label>
-                      <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
+                      <label class="control-label" for="AddTower">Tower<span class="required" aria-required="true">*</span></label>
+                      <input type="text" id="AddTower" formControlName="AddTower" class="form-control req reqa" >
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <div class="form-group"> 
                       <label class="control-label" for="CompanyName">Emirates<span class="required" aria-required="true">*</span></label>
                       <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
@@ -163,11 +163,88 @@
                       <label class="control-label" for="CompanyName">Country<span class="required" aria-required="true">*</span></label>
                       <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req reqa" >
                       </div>
+                    </div> -->
+                    <div class="col-md-3">
+                      <div class="form-group"> 
+                    <label class="control-label" for="Area">Area  <span class="required" aria-required="true">*</span></label>
+                    <p-dropdown 
+                      [options]="areas"
+                      formControlName="Area"
+                      optionLabel="name"
+                      [filter]="true"
+                      filterBy="Name" 
+                      [showClear]="true"
+                      class="req"
+                      placeholder="Choose an Option">
+                      <ng-template pTemplate="selectedItem" let-selectedOption>
+                          <div class="flex align-items-center gap-2">
+                          <div>{{ selectedOption.Name }}</div>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="item" let-Area>
+                          <div class="flex align-items-center gap-2">
+                          <div>{{ Area.Name }}</div>
+                          </div>
+                      </ng-template>
+                      </p-dropdown>
                     </div>
-                    <div class="col-md-12">
+                    </div>
+        
+                  <div class="col-md-3">
+                      <div class="form-group"> 
+                    <label class="control-label" for="Emirates">Emirates  <span class="required" aria-required="true">*</span></label>
+                    <p-dropdown 
+                    [options]="emirates"
+                    formControlName="Emirates"
+                    optionLabel="name"
+                    [filter]="true"
+                    filterBy="Name" 
+                    [showClear]="true"
+                    class="req"
+                    placeholder="Choose an Option">
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center req gap-2">
+                        <div>{{ selectedOption.Name }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="item" let-Emirates>
+                        <div class="flex align-items-center gap-2">
+                        <div>{{ Emirates.Name }}</div>
+                        </div>
+                    </ng-template>
+                    </p-dropdown>
+                  </div>
+                  </div>
+                  
+                  <div class="col-md-3">
+                    <div class="form-group"> 
+                  <label class="control-label" for="Country">Country  <span class="required" aria-required="true">*</span></label>
+                  <p-dropdown 
+                  [options]="countries"
+                  formControlName="Country"
+                  optionLabel="name"
+                  [filter]="true"
+                  filterBy="Name" 
+                  [showClear]="true"
+                  class="req"
+                  placeholder="Choose an Option">
+                  <ng-template pTemplate="selectedItem" let-selectedOption>
+                      <div class="flex align-items-center gap-2">
+                      <div>{{ selectedOption.Name }}</div>
+                      </div>
+                  </ng-template>
+                  <ng-template pTemplate="item" let-Country>
+                      <div class="flex align-items-center gap-2">
+                      <div>{{ Country.Name }}</div>
+                      </div>
+                  </ng-template>
+                  </p-dropdown>
+                  </div>
+                  </div>
+                    <div style="display: none;" class="col-md-12">
                         <span class="divHeaderText">Consultant</span>
                     </div>
-                    <div class="col-md-3">
+                    <div style="display: none;"  class="col-md-3">
                         <div class="form-group"> 
                       <label class="control-label" for="CompanyName">Name<span class="required" aria-required="true">*</span></label>
                       <input type="text" id="CompanyName" formControlName="CompanyName" class="form-control req" >
@@ -363,6 +440,7 @@
                         </div>
                     </div>
                   </div>
+                 
 
                   <div class="row ">
                     <div class="col-md-12">
@@ -384,6 +462,8 @@
                           <th>Authority Fee</th>
                           <th>Advance %</th>
                           <th>Advance Amount</th>
+                          <th>EL ID</th>
+                          <th style="display: none;">EL ELAutoid</th>
                           <th>Created On</th>
                           <th></th>
                         </tr>
@@ -420,7 +500,7 @@
                     <th>Net Amnt</th>
                     <th>Advance Amnt</th>
                     <th>Created</th>
-                    <th></th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -430,7 +510,7 @@
             </div>
             <div class="row mt-4 pull-right">
               <div class="col-md-12">
-                <button type="button"  class="btn btn-secondary">Cancel</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
                 &nbsp; &nbsp;
                 <button type="submit" onclick="return CheckRequiredField('req');"class="btn btn-primary">Save</button>
               </div>

@@ -58,7 +58,14 @@ namespace TrionAPI.Controllers
                     cmd.Parameters.AddWithValue("@ConcernpersonDesignation", assignment.ConcernpersonDesignation);
                     cmd.Parameters.AddWithValue("@ConcernpersonContactNo", assignment.ConcernpersonContactNo);
                     cmd.Parameters.AddWithValue("@ConcernpersonEmail", assignment.ConcernpersonEmail);
-                    
+
+                    cmd.Parameters.AddWithValue("@UnitNo", assignment.AddUnitNo);
+                    cmd.Parameters.AddWithValue("@Floor", assignment.AddFloor);
+                    cmd.Parameters.AddWithValue("@Tower", assignment.AddTower);
+                    cmd.Parameters.AddWithValue("@Area", assignment.Area);
+                    cmd.Parameters.AddWithValue("@Emirates", assignment.Emirates);
+                    cmd.Parameters.AddWithValue("@Country", assignment.Country);
+
 
                     cmd.Parameters.AddWithValue("@DisplayStart", 0);
                     cmd.Parameters.AddWithValue("@DisplayLength", 10);

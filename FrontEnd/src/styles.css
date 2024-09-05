@@ -353,7 +353,11 @@ button.btn.btn-secondary.dropdown-toggle {
         color: #fff;
     }
     .bgGreen {
-        background: #35b152;
+        background: #28a745;
+        color: #fff;
+    }
+    .bgOrange {
+        background: #fd7e14;
         color: #fff;
     }
     .btn-xs {
