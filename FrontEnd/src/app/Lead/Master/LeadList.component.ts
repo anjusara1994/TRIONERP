@@ -4,7 +4,8 @@ import { DropDownServiceService } from '../../drop-down-service.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-declare var $: any; // Declare jQuery globally
+declare var $: any;
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-lead-list',
@@ -23,6 +24,7 @@ export class LeadListComponent implements OnInit, AfterViewInit {
   page: number = 1; 
   pageSize: number = 10; 
   queryParams: any[] = [];
+  selectedLead: any = {};
 
   constructor(private dataService: DataServices,private dropDownService: DropDownServiceService,private fb: FormBuilder,private router: Router) { 
 
@@ -95,7 +97,17 @@ export class LeadListComponent implements OnInit, AfterViewInit {
           orderable: true
         },
         { title: 'SI.No', data: 'RowNum' },
-        { title: 'Client Name', data: 'CompanyName' },
+        // { title: 'Client', data: 'CompanyName' },
+        {
+          title: 'Client',
+          data: null,
+          render: (data: any, type: any, row: any) => {
+            const comname = row.CompanyName;
+            const comClientID = row.ClientID;
+            return `<div><span>${comname}</span></div><div><span>${comClientID}</span></div>`;
+          },
+          orderable: true
+        },
         { title: 'Authority', data: 'Authority' },
         { title: 'ContactPerson', data: 'ContactPerson' },
         { title: 'MobileNumber', data: 'MobileNumber' },
@@ -103,10 +115,10 @@ export class LeadListComponent implements OnInit, AfterViewInit {
         { title: 'Landline', data: 'Landline' },
         { title: 'Designation', data: 'Designation' },
         { title: 'SalesPerson', data: 'SalesPerson' },
-        { title: 'Source', data: 'Source' },
-        { title: 'Area', data: 'Area' },
-        { title: 'Emirates', data: 'EmiratesName' },
-        { title: 'Country', data: 'CountryName' },
+        // { title: 'Source', data: 'Source' },
+        // { title: 'Area', data: 'Area' },
+        // { title: 'Emirates', data: 'EmiratesName' },
+        // { title: 'Country', data: 'CountryName' },
         {
           title: 'CreatedOn',
           data: null,
@@ -116,6 +128,15 @@ export class LeadListComponent implements OnInit, AfterViewInit {
             return `${createdOn}<br>By: ${createdBy}`;
           }
         }
+        ,
+            {
+              title: 'Action',
+              data: 'Autoid',
+              render: (data: any, type: any, row: any) => {
+                const Autoid = row.Autoid;
+                return ` <button type="button" class="btn-xs bgGreen view-btn" data-id="${row.Autoid}" data-client-id="${Autoid}"><i class="fa fa-eye"></i></button>`;
+              }
+            }
       ]
     });
     this.table.nativeElement.addEventListener('change', (event: any) => {
@@ -127,6 +148,11 @@ export class LeadListComponent implements OnInit, AfterViewInit {
           }
         });
       }
+    });
+
+    $(this.table.nativeElement).on('click', '.view-btn', (event: any) => {
+      const autoid = $(event.target).closest('button').data('id');
+      this.showLeadDetails(autoid);  // Call method to show popup
     });
   }
 
@@ -163,4 +189,30 @@ export class LeadListComponent implements OnInit, AfterViewInit {
     debugger
     this.router.navigate(['/LeadList']);
   }
+
+
+  showLeadDetails(Autoid: number): void {
+    // Fetch additional lead details by Autoid
+    this.dataService.getLeadById(Autoid).subscribe({
+      next: (response) => {
+        if (response && response.length > 0) {
+          this.selectedLead = response[0];  // Store the lead details in a variable
+          this.openBootstrapModal();  // Trigger the Bootstrap modal
+        } else {
+          console.error('No data found for the given Autoid');
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching lead details', error);
+      }
+    });
+  }
+  
+  openBootstrapModal(): void {
+    // Use Bootstrap's JavaScript API to show the modal
+    const modalElement = document.getElementById('leadDetailsModal');
+    const modal = new bootstrap.Modal(modalElement!);
+    modal.show();
+  }
+  
 }

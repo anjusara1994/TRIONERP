@@ -141,5 +141,16 @@ namespace TrionAPI.Controllers
             return Ok(Company);
         }
 
+
+
+        [HttpGet("LeadDetails/{id}")]
+        public async Task<IActionResult> GetLeadDetails(int id)
+        {
+            var OpCode = "3";
+            int SeviceId = id;
+            var Company = await _dropdownService.GetLeadDetails(OpCode, SeviceId);
+            return Ok(Company);
+        }
+
     }
 }

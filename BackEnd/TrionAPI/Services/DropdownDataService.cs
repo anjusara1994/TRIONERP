@@ -112,5 +112,17 @@ namespace TrionAPI.Services
             );
         }
 
+        public async Task<IEnumerable<Lead>> GetLeadDetails(string _OpCode, int _LeadId)
+        {
+            using var connection = Connection;
+            var parameters = new { Opcode = _OpCode, Autoid = _LeadId };
+
+            return await connection.QueryAsync<Lead>(
+                "SP_DT_LeadMaster",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+        }
+
     }
 }

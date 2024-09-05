@@ -38,7 +38,7 @@
         public string? AddUnitNo { get; set; }
         public string? AddFloor { get; set; }
         public string? AddTower { get; set; }
-
+        public string? ClientID { get; set; }
         public string? AddArea { get; set; }
         public string? AddEmirates { get; set; }
         public string? AddCountry { get; set; }

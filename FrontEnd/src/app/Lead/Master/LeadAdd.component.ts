@@ -74,10 +74,15 @@ export class LeadAddComponent implements OnInit {
       onSubmit() {
         if (this.leadForm.valid) {
          debugger
-          const leadData = this.leadForm.value;
-          leadData.SubmittedBy = "1";
-          leadData.Opcode = "1";
-          
+          // const leadData = this.leadForm.value;
+          // leadData.SubmittedBy = "1";
+          // leadData.Opcode = "1";
+          const leadData = {
+            ...this.leadForm.value,
+            Opcode: this.isEditMode ? '4' : '1',
+            SubmittedBy : "1",
+            Autoid: this.isEditMode ? this.LeadId : undefined
+          };
           const transformedLeadData = {
             SalesPerson: leadData.SalesPerson?.ID || '',
             Authority: leadData.Authority?.ID || '',
@@ -95,15 +100,17 @@ export class LeadAddComponent implements OnInit {
             SubmittedBy: leadData.SubmittedBy || '',
             Opcode: leadData.Opcode || '',
             CreatedOn: leadData.CreatedOn || '',
-            Autoid: leadData.CreatedOn || null
+            Autoid: leadData.Autoid || null
         };
           
     
           this.DataServices.submitLead(transformedLeadData).subscribe({
            
             next: response => {
-              console.log('Lead submitted successfully', response);
-              ShowDone('Lead submitted successfully');
+              // console.log('Lead submitted successfully', response);
+              // ShowDone('Lead submitted successfully');
+              console.log(`${this.isEditMode ? 'Lead updated' : 'Lead added'} successfully`, response);
+              ShowDone(`${this.isEditMode ? 'Lead updated' : 'Lead added'} successfully`);
               this.leadForm.reset();
               this.router.navigate(['/LeadList']);
           },
@@ -117,25 +124,53 @@ export class LeadAddComponent implements OnInit {
 }
 
 loadleadData(LeadId: number): void {
-  this.DataServices.getServiceById(LeadId).subscribe({
+  this.DataServices.getLeadById(LeadId).subscribe({
     next: response => {
-      // Assuming response is an array and you need to access the first element
+     
       if (response && response.length > 0) {
-        const assignmentData = response[0]; // Accessing the first element of the array
-
+        const LeadData = response[0]; 
+        const selectedSalesPerson = this.salesPersons.find(
+          sp => sp.ID === LeadData.SalesPerson
+        );
+        const selectedAuthority = this.authorities.find(
+          sp => sp.ID === LeadData.Authority
+        );
+        const selectedSource = this.sources.find(
+          sp => sp.ID === LeadData.Source
+        );
+       
+        const selectedEmirates = this.emirates.find(
+          sp => sp.ID === LeadData.Emirates
+        );
+        const selectedCountry = this.countries.find(
+          sp => sp.ID === LeadData.Country
+        );
+        const selectedArea = this.areas.find(
+          sp => sp.ID === LeadData.Area
+        );
+       
         this.leadForm.patchValue({
-          AssignmentName: assignmentData.AssignmentName || '',
-          ETC: assignmentData.ETC || '',
-          ScopeOfWork: assignmentData.ScopeOfWork || '',
-          Objectives:assignmentData.Objectives || '',
-          frespons:assignmentData.FirstPartyResponsibility || '',
+          SalesPerson: selectedSalesPerson || null,
+          Authority : selectedAuthority|| null,
+          Source : selectedSource|| null,
+          CompanyName: LeadData.CompanyName || '',
+          Landline:LeadData.Landline || '',
+          ContactPerson :LeadData.ContactPerson || '',
+          Designation :LeadData.Designation || '',
+          MobileNumber  :LeadData.MobileNumber || '',
+          EmailId  :LeadData.EmailId || '',
+          Address  :LeadData.Address || '',
+          Emirates : selectedEmirates || null,
+          Country  : selectedCountry || null,
+          Area  : selectedArea || null,
+
         });
       } else {
-        console.error('No data found for the given AssignmentId');
+        console.error('No data found for the given LeadId');
       }
     },
     error: error => {
-      console.error('Error loading assignment data', error);
+      console.error('Error loading Lead data', error);
     }
   });
 }

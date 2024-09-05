@@ -30,6 +30,7 @@ namespace TrionAPI.Controllers
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Opcode", lead.Opcode);
+                    cmd.Parameters.AddWithValue("@Autoid", lead.Autoid);
                     cmd.Parameters.AddWithValue("@SalesPerson", lead.SalesPerson);
                     cmd.Parameters.AddWithValue("@Authority", lead.Authority);
                     cmd.Parameters.AddWithValue("@Source", lead.Source);

@@ -358,6 +358,10 @@ button.btn.btn-secondary.dropdown-toggle {
     }
     .btn-xs {
         padding: 1px 5px;
+        font-size: 12px !important;
+        border-radius: 15%;
+        padding: 2px 4px 2px 4px;
+        border: 1px solid #f4f4f4;
     }
     .tablehtmltrheader
     {
@@ -383,4 +387,23 @@ button.btn.btn-secondary.dropdown-toggle {
     @media print {
         .page-break { page-break-before: always; }
       }
+      .modal-header.bg-primary {
+        background-color: #007bff; /* Bootstrap Primary Color */
+        border-bottom: 2px solid #0056b3;
+      }
+      
+      .modal-body p {
+        font-size: 14px;
+        color: #333;
+      }
+      
+      .modal-body h5 {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 2px;
+        margin-bottom: 1rem;
+      }
+      th.sorting {
+        background-color: #254779;
+        color: white;
+    }
       

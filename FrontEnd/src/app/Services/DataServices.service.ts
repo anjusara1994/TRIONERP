@@ -19,6 +19,7 @@ export class DataServices {
   private ELListUrl = `${environment.apiUrl}/Assignment`;  
   private ServiceubmitUrl = `${environment.apiUrl}/Assignment/SubmitService`;  
   private GetServiceUrl = `${environment.apiUrl}/DropDownData/ServiceDetails`;  
+  private GetLeadUrl = `${environment.apiUrl}/DropDownData/LeadDetails`;  
 
   constructor(private http: HttpClient) {}
 
@@ -132,17 +133,14 @@ export class DataServices {
     );
   }
 
-  // getServiceById(id: number): Observable<any> {
-  //   debugger; // Pause here when the function is called
-  //   const url = `${this.GetServiceUrl}/${id}`;
-  //   console.log('Request URL:', url); // Log the URL being used
-    
-  //   return this.http.get<any>(url).pipe(
-  //     tap(response => console.log('Response from API:', response)), // Log the response from API
-  //     catchError(this.handleError<any>('getServiceById'))
-  //   );
-  // }
-  
+  getLeadById(id: number): Observable<any> {
+    debugger
+    const url = `${this.GetLeadUrl}/${id}`; // Construct URL
+    return this.http.get<any>(url).pipe(
+      catchError(this.handleError<any>('getLeadById'))
+    );
+  }
+
 
   getUNSCData(
     xmlnodepath: string,

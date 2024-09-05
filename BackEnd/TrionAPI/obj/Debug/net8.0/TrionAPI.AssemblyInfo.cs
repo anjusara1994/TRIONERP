@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrionAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72aa1519abdc77f3e66b8ea9bb4bec066d3f55ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85324a0dbe13bc1bc6143e0ca61e6e5fefc2cf0f")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrionAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrionAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
