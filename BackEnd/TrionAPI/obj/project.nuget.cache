@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LrJXf6vzpvG+zGsl8fWdTWTHiiCYb8j6kTeewoukD39fToK2vCdTXoegkuooRXpMAvxyElhuWuIBHUIZ096qrw==",
+  "dgSpecHash": "CRQNDTkBJqdwsvbiLP7lbgKceVd7w7NNEy1lFaTvA63pkbZCcLHbH0yvug2RdpZ+6Dq7QZWcShLne2pPzsmXzg==",
   "success": true,
-  "projectFilePath": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
+  "projectFilePath": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anjub\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\anjub\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

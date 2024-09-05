@@ -123,7 +123,7 @@ namespace TrionAPI.Controllers
             return Ok(Company);
         }
 
-        [HttpGet("AssignmentDetails")]
+        [HttpGet("AssignmentDetails")] 
         public async Task<IActionResult> GetAssignmentDetails(string search = "")
         {
             var OpCode = "13";

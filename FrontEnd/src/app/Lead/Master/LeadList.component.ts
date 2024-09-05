@@ -52,6 +52,8 @@ export class LeadListComponent implements OnInit, AfterViewInit {
       this.dropDownService.getSource(data => {
         this.sources = data;
       });
+
+      
   }
 
   ngAfterViewInit(): void {
@@ -116,6 +118,16 @@ export class LeadListComponent implements OnInit, AfterViewInit {
         }
       ]
     });
+    this.table.nativeElement.addEventListener('change', (event: any) => {
+      if (event.target.classList.contains('row-checkbox')) {
+        const checkboxes = this.table.nativeElement.querySelectorAll('.row-checkbox');
+        checkboxes.forEach((checkbox: any) => {
+          if (checkbox !== event.target) {
+            checkbox.checked = false;
+          }
+        });
+      }
+    });
   }
 
   onFilterChange(): void {
@@ -131,6 +143,19 @@ export class LeadListComponent implements OnInit, AfterViewInit {
     // Reload DataTable
     if ($.fn.DataTable.isDataTable(this.table.nativeElement)) {
       $(this.table.nativeElement).DataTable().ajax.reload();
+    }
+  }
+
+  onEditButtonClick(event: Event): void {
+    event.preventDefault();
+    const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+    if (selectedCheckboxes.length === 1) {
+      const selectedServiceId = (selectedCheckboxes[0] as HTMLInputElement).value;
+      this.router.navigate(['/Lead'], { queryParams: { LeadId: selectedServiceId } });
+    } else if (selectedCheckboxes.length > 1) {
+      alert('Please select only one lead to edit.');
+    } else {
+      alert('Please select a lead to edit.');
     }
   }
 

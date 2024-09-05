@@ -33,7 +33,7 @@ export class servicelistaddComponent implements OnInit,AfterViewInit {
       if (params['serviceId']) {
         this.AssignmentId = +params['serviceId'];
         this.isEditMode = true;
-        // Load data for the AssignmentId if needed
+        
         this.loadAssignmentData(this.AssignmentId);
       }
     });
@@ -68,13 +68,14 @@ export class servicelistaddComponent implements OnInit,AfterViewInit {
         debugger
         const formData = {
           ...this.ServiceForm.value,
-          Opcode: '7'
+          Opcode: this.isEditMode ? '9' : '7',
+          AssignmentId: this.isEditMode ? this.AssignmentId : undefined
         };
         this.DataServices.submitService(formData).subscribe({
            
             next: response => {
-              console.log('Service added successfully', response);
-              ShowDone('Service added successfully');
+              console.log(`${this.isEditMode ? 'Service updated' : 'Service added'} successfully`, response);
+              ShowDone(`${this.isEditMode ? 'Service updated' : 'Service added'} successfully`);
               this.ServiceForm.reset();
               this.router.navigate(['/Services']);
           },
@@ -116,10 +117,22 @@ export class servicelistaddComponent implements OnInit,AfterViewInit {
           if (this.editors['Objectives']) {
             this.editors['Objectives'].setData(assignmentData.Objectives || '');
           }
-          if (this.editors['frespons']) {
-            this.editors['frespons'].setData(assignmentData.FirstPartyResponsibility || '');
+          if (this.editors['FirstPartyResponsibility']) {
+            this.editors['FirstPartyResponsibility'].setData(assignmentData.FirstPartyResponsibility || '');
           }
-          console.log('AssignmentName:', assignmentData.AssignmentName);
+          if (this.editors['Limitations']) {
+            this.editors['Limitations'].setData(assignmentData.Limitations || '');
+          }
+          if (this.editors['SecondPartyResponsibility']) {
+            this.editors['SecondPartyResponsibility'].setData(assignmentData.SecondPartyResponsibility || '');
+          }
+          if (this.editors['OtherMatters']) {
+            this.editors['OtherMatters'].setData(assignmentData.OtherMatters || '');
+          }
+          if (this.editors['Report']) {
+            this.editors['Report'].setData(assignmentData.Report || '');
+          }
+         
         } else {
           console.error('No data found for the given AssignmentId');
         }

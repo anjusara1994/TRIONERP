@@ -107,7 +107,7 @@
                       </button>
                       <ul class="dropdown-menu dropdown-menu-end">
                           <li><a class="dropdown-item" href="#" [routerLink]="['/Lead']" id="addButton"><i class="fa fa-plus"></i> Add</a></li>
-                          <li><a class="dropdown-item" href="#" id="editButton"><i class="fa fa-edit"></i> Edit</a></li>
+                          <li><a class="dropdown-item" href="#" (click)="onEditButtonClick($event)"  id="editButton"><i class="fa fa-edit"></i> Edit</a></li>
                       </ul>
                   </div>
               </div>

@@ -4286,11 +4286,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
+      "projectUniqueName": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
       "projectName": "TrionAPI",
-      "projectPath": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
+      "projectPath": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
       "packagesPath": "C:\\Users\\anjub\\.nuget\\packages\\",
-      "outputPath": "D:\\All Projects\\TrionERP\\BackEnd\\TrionAPI\\obj\\",
+      "outputPath": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

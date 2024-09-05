@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DropDownServiceService } from '../../drop-down-service.service';
 import { DataServices } from '../../Services/DataServices.service';
@@ -20,8 +20,9 @@ export class LeadAddComponent implements OnInit {
       areas:{ ID: number; Name: string }[] = [];
       countries:{ ID: number; Name: string }[] = [];
       emirates:{ ID: number; Name: string }[] = [];
-    
-      constructor(private fb: FormBuilder,private dropDownService: DropDownServiceService ,private DataServices: DataServices, private router: Router) { }
+      isEditMode: boolean = false;
+      LeadId?: number; 
+      constructor(private fb: FormBuilder,private dropDownService: DropDownServiceService ,private DataServices: DataServices, private router: Router,private route: ActivatedRoute) { }
     
       ngOnInit(): void {
         this.leadForm = this.fb.group({
@@ -59,6 +60,15 @@ export class LeadAddComponent implements OnInit {
 
           this.dropDownService.getEmirates(data => {
             this.emirates = data;
+          });
+
+          this.route.queryParams.subscribe(params => {
+            if (params['LeadId']) {
+              this.LeadId = +params['LeadId'];
+              this.isEditMode = true;
+              
+              this.loadleadData(this.LeadId);
+            }
           });
       }
       onSubmit() {
@@ -105,6 +115,31 @@ export class LeadAddComponent implements OnInit {
         
       }
 }
+
+loadleadData(LeadId: number): void {
+  this.DataServices.getServiceById(LeadId).subscribe({
+    next: response => {
+      // Assuming response is an array and you need to access the first element
+      if (response && response.length > 0) {
+        const assignmentData = response[0]; // Accessing the first element of the array
+
+        this.leadForm.patchValue({
+          AssignmentName: assignmentData.AssignmentName || '',
+          ETC: assignmentData.ETC || '',
+          ScopeOfWork: assignmentData.ScopeOfWork || '',
+          Objectives:assignmentData.Objectives || '',
+          frespons:assignmentData.FirstPartyResponsibility || '',
+        });
+      } else {
+        console.error('No data found for the given AssignmentId');
+      }
+    },
+    error: error => {
+      console.error('Error loading assignment data', error);
+    }
+  });
+}
+
 navigateToLeadList(): void {
   const confirmation = window.confirm('Are you sure you want to cancel?');
   if (confirmation) {
