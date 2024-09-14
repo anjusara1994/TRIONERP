@@ -60,11 +60,17 @@ namespace TrionAPI.Models
             public string? Report { get; set; }
             public string? OtherMatters { get; set; }
             public string? Objectives { get; set; }
-
             public int? Area { get; set; }
             public int? Emirates { get; set; }
             public int? Country { get; set; }
-
+            public string? ELFirstPartySign { get; set; }
+            public string? ELSecondPartySign { get; set; }
+            public string? ELFirstPartySignDate { get; set; }
+            public string? ELSecondPartySignDate { get; set; }
+            public string? QUOTFirstPartySign { get; set; }
+            public string? QUOTSecondPartySign { get; set; }
+            public string? QUOTFirstPartySignDate { get; set; }
+           public string? QUOTSecondPartySignDate { get; set; }
 
     }
 

@@ -2,16 +2,19 @@
 using System.Data;
 using TrionAPI.Models;
 using Dapper;
+using Microsoft.AspNetCore.Http;
 
 namespace TrionAPI.Services
 {
     public class DropdownDataService
     {
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public DropdownDataService(IConfiguration configuration)
+        public DropdownDataService(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         private IDbConnection Connection => new SqlConnection(_configuration.GetConnectionString("erpconstr"));
@@ -69,11 +72,30 @@ namespace TrionAPI.Services
             using var connection = Connection;
             var parameters = new { OpCode = _OpCode, Search = _Search };
 
-            return await connection.QueryAsync<Assignment>(
-                "GetDropDownData",
-                parameters,
-                commandType: CommandType.StoredProcedure
-            );
+            //return await connection.QueryAsync<Assignment>(
+            //    "GetDropDownData",
+            //    parameters,
+            //    commandType: CommandType.StoredProcedure
+            //);
+                    var assignments = await connection.QueryAsync<Assignment>(
+               "GetDropDownData",
+               parameters,
+               commandType: CommandType.StoredProcedure
+           );
+
+            var request = _httpContextAccessor.HttpContext.Request;
+            string baseUrl = $"{request.Scheme}://{request.Host}/";
+
+            foreach (var assignment in assignments)
+            {
+                if (!string.IsNullOrEmpty(assignment.QUOTFirstPartySign))
+                {
+                    // Convert relative path to full URL dynamically
+                    assignment.QUOTFirstPartySign = Path.Combine(baseUrl, assignment.QUOTFirstPartySign.Replace("\\", "/"));
+                }
+            }
+
+            return assignments;
         }
 
         public async Task<IEnumerable<Assignment>> GetAssignementDetails(string _OpCode, string _Search)

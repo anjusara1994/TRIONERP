@@ -1,8 +1,8 @@
 import { Component, OnInit  } from "@angular/core";
 import { Router , ActivatedRoute } from '@angular/router';
-import { DropDownServiceService } from '../../drop-down-service.service';
+import { DropDownServiceService } from '../../Services/drop-down-service.service';
 import { DataServices } from '../../Services/DataServices.service';
-import { NumberToWordsPipe } from '../../number-to-words.pipe'; 
+import { NumberToWordsPipe } from '../../commonfunctions/number-to-words.pipe'; 
 
 @Component({
     selector:'ViewEL',
@@ -23,10 +23,10 @@ export class ViewEngagementLetter implements OnInit {
     ClientAddress: string = '';
     ELID: string = '';
     ELDate: string = '';
-    totalProfessionalFee: number = 0;
-    totalVatAmount: number = 0;
-    totalNetAmount: number = 0;
-
+    totalProfessionalFee: number = 0.0;
+    totalVatAmount: number = 0.0;
+    totalNetAmount: number = 0.0;
+    hasScopeOfWork: boolean = false;
     constructor(private route: ActivatedRoute,private router: Router,private dropDownService: DropDownServiceService) { }
 
     ngOnInit(): void {
@@ -100,24 +100,25 @@ export class ViewEngagementLetter implements OnInit {
         this.dropDownService.getAssignmentDetails(autoid).subscribe({
           next: data => {
             if (data && data.length > 0) {
-              this.assignmentList = data; // Assign the data to assignmentList
+              this.assignmentList = data; 
+              //this.hasScopeOfWork = data.some(scope => scope.ScopeOfWork && scope.ScopeOfWork.trim() !== '');
             }
           },
           error: err => console.error('Error fetching assignment details:', err)
         });
       }
-
       printDiv(divId: string) {
         const printContents = document.getElementById(divId)?.innerHTML;
         const originalContents = document.body.innerHTML;
     
         if (printContents) {
-          document.body.innerHTML = printContents;
-          window.print();
-          document.body.innerHTML = originalContents;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
         } else {
-          console.error('Div not found');
+            console.error('Div not found');
         }
-      }
+    }
+   
 }
 

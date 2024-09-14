@@ -1,0 +1,23 @@
+.signature-popup {
+    padding: 20px;
+    background: #fff;
+  }
+  
+  .signature-pad {
+    margin-bottom: 20px;
+    background-color: #ddd;
+  }
+  
+  .upload-section {
+    margin-top: 20px;
+  }
+  .signature-pad {
+  position: relative;
+}
+
+.clear-btn {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  z-index: 1; /* Make sure it's above the canvas */
+}

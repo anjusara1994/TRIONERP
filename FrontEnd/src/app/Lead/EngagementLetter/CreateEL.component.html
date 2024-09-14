@@ -491,6 +491,7 @@
                   <tr>
                     <th></th>
                     <th>SI.No</th>
+                    <th>Is Confirmed</th>
                     <th>ID</th>
                     <th>Is Sent?</th>
                     <th>Assignments</th>
@@ -510,9 +511,9 @@
             </div>
             <div class="row mt-4 pull-right">
               <div class="col-md-12">
-                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button type="button"  (click)="navigateToLeadList()"  class="btn btn-secondary"><i class="fa fa-home"></i> Back to Home</button>
                 &nbsp; &nbsp;
-                <button type="submit" onclick="return CheckRequiredField('req');"class="btn btn-primary">Save</button>
+                <button style="display:none;" type="submit" onclick="return CheckRequiredField('req');"class="btn btn-primary">Save</button>
               </div>
             </div>
     

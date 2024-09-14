@@ -32,7 +32,10 @@ import { CreateELComponent } from './Lead/EngagementLetter/CreateEL.component';
 import { ViewEngagementLetter } from './Lead/EngagementLetter/ViewEngagementLetter.component';
 import { ServiceListComponent } from './DataMaster/service-list/service-list.component';
 import { servicelistaddComponent } from './DataMaster/service-list/service-listadd.component';
-import { LayoutComponent } from './layout.component';
+import { LayoutComponent } from './Layout/layout.component';
+import { ViewQuote } from './Lead/EngagementLetter/ViewQuote.component';
+import { ELListComponent } from './Lead/EngagementLetter/ELList.component';
+import { ReportListComponent } from './Lead/Master/ReportMaster.component';
 
 export const routes: Routes = [
   { path: 'login', component: UserLoginComponent },
@@ -47,13 +50,16 @@ export const routes: Routes = [
       { path: 'LeadList', component: LeadListComponent },
       { path: 'Screening', component: ScreeningComponent },
       { path: 'EL', component: CreateELComponent },
-      { path: 'EL', component: CreateELComponent },
       { path: 'Services', component: ServiceListComponent },
       { path: 'AddServices', component: servicelistaddComponent },
-      { path: 'ViewEL/:autoid/:clientid', component: ViewEngagementLetter },
+      { path: 'ELALL', component: ELListComponent },
+      { path: 'Report', component: ReportListComponent },
+      // { path: 'ViewEL/:autoid/:clientid', component:  },
+      //{ path: 'ViewQuote/:autoid/:clientid', component: ViewQuote },
     ]
   },
-
+  { path: 'ViewQuote/:autoid/:clientid', component: ViewQuote },
+  { path: 'ViewEL/:autoid/:clientid', component: ViewEngagementLetter },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default redirect to /login
   { path: '**', redirectTo: '/login' } // Wildcard route for unknown paths
 ];

@@ -1,0 +1,301 @@
+<div  class="container">
+  <div class="print-button-container">
+    <button (click)="printDiv('printableDiv')"><i class="fa fa-print"></i> Print</button>
+  </div>
+<div id="printableDiv" style="height: 100%;" class="col-md-12">
+  <div class="content">
+  <div class="front-page-image">
+    <img src="../../../assets/images/frontpage.jpg" style="width:100%;height:100%;object-fit:cover;" />
+  </div>   
+  <div class="bg-logo">
+    <img src="../../../assets/images/companylogowhite.jpg" class="bg-logoimg" />
+  </div>  
+  <div class="overlay">
+   
+  </div>  
+  
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background: #fff">
+    <tr>
+        <td align="center" style="padding-top:20px;" colspan="2"><h4><strong>PROPOSED FEE</strong> </h4></td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p style="font-weight: bold; font-style: italic; font-size: 16px; color:#A7A9AC"> 
+               {{Address}}<br />
+                {{Email}} | {{Contact}}
+            </p>
+        </td>
+    </tr>
+    <tr style="position: relative;">
+        <td height="50">&nbsp;</td>
+    </tr>
+</table>
+<!-- <div style="page-break-after:always"></div> -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td valign="top">
+          <p><strong>{{ ClientName }}</strong><br />
+          Concern Person : <strong>{{ ClientConcernpersonName }}</strong><br />
+          Contact Number : <strong>{{ ClientContact }}</strong><br />
+          Email : <strong>{{ ClientEmail }}</strong><br />
+          Address : <strong>{{ ClientAddress }}</strong></p>
+            
+            <p style="font-weight: 600;">Date : {{ELDate}} </p>
+            
+            <hr />
+            <p>
+              Sales Person : <strong>{{ SalesPersonName }}</strong><br />
+              Designation : <strong></strong><br />
+              Contact Number : <strong>{{ SalesPersonMob }}</strong><br />
+              Email : <strong>{{ SalesPersonEmail }}</strong><br />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" height="30">&nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+    <tr>
+        <td colspan="2" align="center" valign="top">
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <table class="tablehtml">
+                            <tr class="tablehtmltrheader">
+                                <td class="tablehtmltd"  valign="top"><div align="center"><strong>Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Period of Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Type of Assignment</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Professional Fee</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAT Rate</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAT Amount</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Amount</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>Advance %</strong></div></td>
+                            </tr>
+                            <tr *ngFor="let item of assignmentList">
+                               
+                                <td class="tablehtmltd" align="center">{{ item.AssignmentName }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.Period }}</td>
+                                <td  class="tablehtmltd" align="center">{{ item.Mode }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.ProfessionalFee }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.VatPercent }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.VatAmount }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.AmountIncVat }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.AdvancePercent }}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="right" valign="top">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin: 0">
+                <tr>
+                    <td align="left" valign="top" >
+                        <table class="tabletd">
+                            <tr>
+                                <td height="10">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><strong><span>Amount in words</span></strong></td>
+                            </tr>
+                            <tr style="text-transform: capitalize;">
+                                <td><strong><strong>AED : {{ totalNetAmount | numberToWords }}</strong></strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="right" width="250">
+                        <table class="tabletd">
+                            <tr>
+                                <td colspan="3" height="10">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 85%">Total Professional Fee:</td>
+                                <td style="width: 5%">&nbsp;</td>
+                                <td style="width: 10%" align="right"><strong>{{totalProfessionalFee | number:'1.2-2'}}</strong></td>
+                            </tr>
+                           
+                            <tr>
+                                <td style="width: 85%">Total VAT Amount:</td>
+                                <td style="width: 5%">&nbsp;</td>
+                                <td style="width: 10%" align="right"><strong>{{totalVatAmount | number:'1.2-2'}}</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" height="10">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+</tr>
+<tr>
+        <td colspan="2" align="right">
+            <table width="300" border="0" cellpadding="0" cellspacing="0" style="margin: 0">
+                <tr class="pMargin">
+                    <td align="right" style="background: #2143ff; height: 30px; font-size:12px; padding: 10px; color: #fff;">
+                        Total Amount (AED)*
+                                    <span style="display: block; font-size: 20px; font-weight: bold; margin-top: 5px;">{{ totalNetAmount | number:'1.2-2' }}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+</tr>
+   
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <table width="100%" border="0" cellpadding="8" cellspacing="0" style="margin-top:10px; font-size: 14px;">
+          <tr>
+            <td width="50%" valign="top">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p>
+                      <strong>First Party <button (click)="openModal()">Sign</button></strong>
+                      <br />
+                      <strong>{{ companyName }}</strong>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                  
+                  </td>
+                  <td>
+                    <div>
+                     
+                     
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p style="font-size: 12px;">
+                      <strong><em>(Sign and Company Seal)</em></strong>
+                      <img [src]="QUOTFirstPartySign" width="80px" height="80px"/>
+                      <img src="../../../assets/images/stamp.png" width="80px" height="80px" />
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="40%">Name</td>
+                  <td width="5%">:</td>
+                  <td width="55%"></td>
+                </tr>
+                <tr>
+                  <td width="40%">Designation</td>
+                  <td width="5%">:</td>
+                  <td width="55%">Manager</td>
+                </tr>
+                <tr>
+                  <td>Date</td>
+                  <td>:</td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+            <td width="3%">&nbsp;</td>
+            <td width="47%" style="padding-right: 0px;" valign="top">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p>
+                      <strong>Second Party</strong>
+                      <br />
+                      <strong>{{ ClientName }}</strong>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                  
+                  </td>
+                  <td>
+                    <div>
+                     
+                     
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p style="font-size: 12px;">
+                      <strong><em>(Sign and Company Seal)</em></strong>
+                    
+                    <img src="../../../assets/images/sign.jpg" width="80px" height="80px"/>
+                    <img src="../../../assets/images/stamp.png" width="80px" height="80px" />
+                  </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="40%">Name</td>
+                  <td width="5%">:</td>
+                  <td width="55%"></td>
+                </tr>
+                <tr>
+                  <td width="40%">Designation</td>
+                  <td width="5%">:</td>
+                  <td width="55%">Manager</td>
+                </tr>
+                <tr>
+                  <td>Date</td>
+                  <td>:</td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: center; margin-top: 50px;">
+                Thank you for choosing ALYAH.<br />
+                We look forward to working with you.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+       <div style="bottom: 0; width: 100%; text-align: center; font-size: 12px; color: #000;">
+          <p style="margin: 0;">
+          <strong>Disclaimer:</strong> This document is intended solely for the use of the recipient. Unauthorized sharing or distribution is prohibited.
+          </p>
+          </div>
+        </td>
+    </tr>
+</table>
+</div>
+<footer  id="footerdiv" >
+    <img src="../../../assets/images/footerimg.png" class="bg-logoimg" alt="Footer Image" style="width:100%;height:40px;object-fit:cover;padding-bottom:0px;margin-bottom: 0px;">
+</footer>
+</div>
+
+<div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="leadDetailsModalLabel"><i class="fas fa-pen"></i> Signature</h5>
+        <button type="button" class="close ms-auto" data-bs-dismiss="modal" #closeButton aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Content for the modal (e.g., signature pad) -->
+        <app-signature-popup [Signclientid]="Signclientid" [Signautoid]="Signautoid" (signatureSaved)="onSignatureSaved($event)"></app-signature-popup>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save Signature</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

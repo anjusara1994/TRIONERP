@@ -15,22 +15,8 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.loadUserData();
-  }
-
-  loadUserData(): void {
-    // You might want to fetch user data from a service or use local storage
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      this.user = JSON.parse(userData);
-    } else {
-      
-      this.router.navigate(['/login']);
-    }
-  }
-
-  toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
     
   }
+
+
 }

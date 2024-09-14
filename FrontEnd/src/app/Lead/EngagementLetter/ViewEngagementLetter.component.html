@@ -1,5 +1,19 @@
 <div  class="container">
-<div id="printableDiv" class="col-md-12">
+  <div class="print-button-container">
+    <button (click)="printDiv('printableDiv')"><i class="fa fa-print"></i> Print</button>
+  </div>
+<div id="printableDiv" style="height: 100%;" class="col-md-12">
+  <div class="content">
+  <div class="front-page-image">
+    <img src="../../../assets/images/frontpage.jpg" style="width:100%;height:100%;object-fit:cover;" />
+  </div>   
+  <div class="bg-logo">
+    <img src="../../../assets/images/companylogowhite.jpg" class="bg-logoimg" />
+  </div>  
+  <div class="overlay">
+   
+  </div>  
+  
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background: #fff">
     <tr style="position: relative;">
         <td><div class="hideheader">&nbsp;</div></td>
@@ -7,11 +21,11 @@
     <tr>
         <td height="10" colspan="2"></td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td align="center" colspan="2">
             <img src="../../../assets/images/companylogo.png" width="200" />
         </td>
-    </tr>
+    </tr> -->
     <tr>
         <td height="50" colspan="2"></td>
     </tr>
@@ -28,17 +42,7 @@
             </h2>
         </td>
     </tr>
-    <tr>
-        <td height="50" colspan="2"></td>
-    </tr>
-    <tr>
-        <td align="center">
-            <img src="../../../assets/images/companylogowhite.jpg" width="150" />
-        </td>
-    </tr>
-    <tr>
-        <td height="20" colspan="2"></td>
-    </tr>
+  
     <tr>
         <td align="center">
             <p style="font-weight: bold; font-style: italic; font-size: 16px; color:#A7A9AC"> 
@@ -51,7 +55,7 @@
         <td height="50">&nbsp;</td>
     </tr>
 </table>
-<div style="page-break-after:always"></div>
+<!-- <div style="page-break-after:always"></div> -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
         <td valign="top">
@@ -121,41 +125,41 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
         <td valign="top">
-              <!--Scope of work-->
-             <span style="font-size: 16px;font-weight: bold;"><u>Scope of work</u></span>
-            <!--<div *ngFor="let scope of assignmentList">
+          <!--Objectives-->
+          <div *ngFor="let scope of assignmentList">
+            <ng-container *ngIf="scope.Objectives">
+              <span style="font-size: 16px;font-weight: bold;"><u>Objectives</u></span>
               <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
-              <p [innerHTML]="scope.ScopeOfWork"></p>
-            </div> -->
+              <p [innerHTML]="scope.Objectives"></p>
+            </ng-container>
+          </div>
+              <!--Scope of work-->
             <div *ngFor="let scope of assignmentList">
                 <ng-container *ngIf="scope.ScopeOfWork">
+                  <span style="font-size: 16px;font-weight: bold;"><u>Scope of work</u></span>
                   <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
                   <p [innerHTML]="scope.ScopeOfWork"></p>
                 </ng-container>
               </div>
-            <!--FIRST-PARTY RESPONSIBILITY-->
+           
             <p style='font-size: 16px;'><strong><u>First Party Responsibility</u></strong></p>
             <ul>
                 <li>
                     The First Party remains committed to providing high-quality services to its clients. If dissatisfied with the services rendered by the First Party,
-                    the Second Party should apprise the Client Engagement Manager about any shortfalls and scope for improvement.
+                    the Second Party should apprise the Manager about any shortfalls and scope for improvement.
                 </li>
                 <li>The First Party will provide the assignments to the Second Party as an independent service provider, not as an employee, agent, partner, or joint venture.</li>
                 <li>The First Party will provide the agreed services with professional due care and competence and deliver the outcome within the agreed timeframe.</li>
                 <li>It is not guaranteed that First Party has determined or forecast future events or circumstances by any advice, opinion, statement of expectation, 
                     forecast, or suggestion provided by First Party as part of the Services.</li>
             </ul>
-            <!-- <div *ngFor="let scope of assignmentList">
-                <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
-                <p [innerHTML]="scope.FirstPartyResponsibility"></p>
-              </div> -->
               <div *ngFor="let scope of assignmentList">
                 <ng-container *ngIf="scope.FirstPartyResponsibility">
                   <p class="m-top-10"><strong>{{ scope.AssignmentName }}</strong></p>
                   <p [innerHTML]="scope.FirstPartyResponsibility"></p>
                 </ng-container>
               </div>
-            <!--SECOND-PARTY RESPONSIBILITY-->
+          
             <p style='font-size: 16px;'><strong><u>Second Party Responsibility</u></strong></p>
             <ul>
                 <li>
@@ -181,7 +185,7 @@
                     Our period of Engagement is limited to the duration of the assignment(s) indicated above.
                 </li>
                 <li>Please be advised that the Estimated Time of Completion provided is subject upon receiving the complete 
-                    set of requisite documents and information essential for the assignment. Tasks to be performed by AMCA will be 
+                    set of requisite documents and information essential for the assignment. Tasks to be performed by ALYAH will be 
                     concluded within this time frame. However, it is important to acknowledge that this excludes the duration allotted 
                     for Authority Approvals in instances necessitating external approval.
                 </li>
@@ -250,30 +254,17 @@
 				<!-- CONFIDENTIALITY -->
 				<p style='font-size: 16px;'><strong><u>Confidentiality</u></strong></p>
 				<ul>
-								<li>
-									The First Party agrees that in performing their obligation under this agreement, they shall comply with all applicable laws, including data privacy and protection laws. The First Party further confirms that they have proper internal controls in place 
-									for the protection of client data and maintenance of the confidentiality of all information disclosed to them by the Second Party.
-								</li>
-								<li>Both Parties agree to be legally bound hereby and expressly agree that no one will attempt, directly or indirectly, 
-									to contact the other Parties’ contacts or affiliates on matters of subject business or contact or negotiate with a confidential source or make use 
-									of any confidential information provided by any of the parties herein, except with the express consent of the concerned Party.</li>
-								<li>Both Parties agree to hold all confidential or proprietary information, business plans, analyses, compilations, studies,
-									slides, and copies of slides or other arrangements proposed or in effect with any outside source, whether oral or written 
-									(collectively, the “Confidential Information”) in trust and as confidential and each Party agrees that the Confidential information shall be used only
-									for the purpose of proposed subject business and shall not be used for any other purpose or disclosed to any outside source under any circumstances. </li>
+          <li>
+            ALYAH agrees that in fulfilling our obligation under this agreement, we shall comply with all applicable laws, including data privacy and protection laws. We further confirm that we have proper internal controls in place to protect client data and maintain the confidentiality of all information disclosed to us by the customer.
+          </li>
 				</ul>
 
 				<!-- TERMINATION -->
 				<p style='font-size: 16px;'><strong><u>Termination</u></strong></p>
 				<ul>
-								<li>
-									If the Second Party wishes to back out after signing the contract, no refund shall be payable for the advance already paid.
-								</li>
-								<li>The Second Party can terminate this Agreement at any time by providing written notice 90 days prior to the termination date, failing which the Second Party will be liable to pay 30% of the total amount of the Agreement as a penalty. </li>
-								<li>In the event of termination, payments will be made to the First Party for all work performed up to the date of termination. The First Party shall return all the documents. </li>
-								<li>If it is determined that (a) a governmental, regulatory, professional, or entity having the force of law has introduced a new or modified an existing law, rule, regulation, interpretation, or decision, the result of which would make the First Party’s performance of any part of the Engagement illegal or otherwise unlawful or in conflict, the First Party may terminate the Engagement in wholly or partially with immediate effect upon written notice to the Second Party.</li>
-								<li>The Second Party agrees to accept responsibility for any effect on the services due to any misconduct detected on its part.</li>
-								<li>This Engagement will be terminated automatically once the services have been performed, applicable to all one-time assignments.</li>
+          <li>
+            The client can terminate this contract at any time, by providing a written notice three months prior to termination date, failing which the client will be liable to pay 30% of the total amount of agreement as penalty. 
+          </li>
 				</ul>
 
 				<!-- RENEWAL -->
@@ -312,8 +303,8 @@
                                 <td class="tablehtmltd" valign="top"><div align="center"><strong>Period of Assignment</strong></div></td>
                                 <td class="tablehtmltd" valign="top"><div align="center"><strong>Type of Assignment</strong></div></td>
                                 <td class="tablehtmltd" valign="top"><div align="center"><strong>Professional Fee</strong></div></td>
-                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAt Rate</strong></div></td>
-                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAt Amount</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAT Rate</strong></div></td>
+                                <td class="tablehtmltd" valign="top"><div align="center"><strong>VAT Amount</strong></div></td>
                                 <td class="tablehtmltd" valign="top"><div align="center"><strong>Amount</strong></div></td>
                                 <td class="tablehtmltd" valign="top"><div align="center"><strong>Advance %</strong></div></td>
                             </tr>
@@ -325,7 +316,7 @@
                                 <td class="tablehtmltd" align="center">{{ item.ProfessionalFee }}</td>
                                 <td class="tablehtmltd" align="center">{{ item.VatPercent }}</td>
                                 <td class="tablehtmltd" align="center">{{ item.VatAmount }}</td>
-                                <td class="tablehtmltd" align="center">{{ item.NetAmount }}</td>
+                                <td class="tablehtmltd" align="center">{{ item.AmountIncVat }}</td>
                                 <td class="tablehtmltd" align="center">{{ item.AdvancePercent }}</td>
                             </tr>
                         </table>
@@ -336,7 +327,7 @@
     </tr>
     <tr>
         <td align="right" valign="top">
-            <table width="800" border="0" cellpadding="0" cellspacing="0" style="margin: 0">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin: 0">
                 <tr>
                     <td align="left" valign="top" >
                         <table class="tabletd">
@@ -344,9 +335,9 @@
                                 <td height="10">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td><span style="font-size:12px;">Amount in words</span></td>
+                                <td><strong><span>Amount in words</span></strong></td>
                             </tr>
-                            <tr>
+                            <tr style="text-transform: capitalize;">
                                 <td><strong><strong>AED : {{ totalNetAmount | numberToWords }}</strong></strong></td>
                             </tr>
                         </table>
@@ -359,13 +350,13 @@
                             <tr>
                                 <td style="width: 85%">Total Professional Fee:</td>
                                 <td style="width: 5%">&nbsp;</td>
-                                <td style="width: 10%" align="right"><strong>{{totalProfessionalFee}}</strong></td>
+                                <td style="width: 10%" align="right"><strong>{{totalProfessionalFee | number:'1.2-2'}}</strong></td>
                             </tr>
                            
                             <tr>
                                 <td style="width: 85%">Total VAT Amount:</td>
                                 <td style="width: 5%">&nbsp;</td>
-                                <td style="width: 10%" align="right"><strong>{{totalVatAmount}}</strong></td>
+                                <td style="width: 10%" align="right"><strong>{{totalVatAmount | number:'1.2-2'}}</strong></td>
                             </tr>
 
                             <tr>
@@ -383,7 +374,7 @@
                 <tr class="pMargin">
                     <td align="right" style="background: #2143ff; height: 30px; font-size:12px; padding: 10px; color: #fff;">
                         Total Amount (AED)*
-                                    <span style="display: block; font-size: 20px; font-weight: bold; margin-top: 5px;">{{totalNetAmount}}</span>
+                                    <span style="display: block; font-size: 20px; font-weight: bold; margin-top: 5px;">{{ totalNetAmount | number:'1.2-2' }}</span>
                     </td>
                 </tr>
             </table>
@@ -430,6 +421,8 @@
                   <td colspan="3" width="100%">
                     <p style="font-size: 12px;">
                       <strong><em>(Sign and Company Seal)</em></strong>
+                      <img src="../../../assets/images/sign.jpg" width="80px" height="80px"/>
+                      <img src="../../../assets/images/stamp.png" width="80px" height="80px" />
                     </p>
                   </td>
                 </tr>
@@ -452,31 +445,35 @@
             </td>
             <td width="3%">&nbsp;</td>
             <td width="47%" style="padding-right: 0px;" valign="top">
-              <div style="display: flex; width: 100%;">
-                <div style="width: 100%;">
-                  <p>
-                    <strong>Second Party</strong>
-                    <br />
-                   
-                  </p>
-                </div>
-                
-              </div>
-              <div style="height: 146px; display: flex">
-                <div style="width: 100%">
-                 
-                </div>
-                <div style="width: 100%">
-                 
-                 
-                </div>
-              </div>
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
                   <td colspan="3" width="100%">
-                    <p style="font-size: 12px;">
-                      <strong><em>()</em></strong>
+                    <p>
+                      <strong>Second Party</strong>
+                      <br />
+                     
                     </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                  
+                  </td>
+                  <td>
+                    <div>
+                     
+                     
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" width="100%">
+                    <p style="font-size: 12px;">
+                      <strong><em>(Sign and Company Seal)</em></strong>
+                    
+                    <img src="../../../assets/images/sign.jpg" width="80px" height="80px"/>
+                    <img src="../../../assets/images/stamp.png" width="80px" height="80px" />
+                  </p>
                   </td>
                 </tr>
                 <tr>
@@ -487,14 +484,13 @@
                 <tr>
                   <td width="40%">Designation</td>
                   <td width="5%">:</td>
-                  <td width="55%"></td>
+                  <td width="55%">Manager</td>
                 </tr>
                 <tr>
-                  <td width="40%">Date</td>
-                  <td width="5%">:</td>
-                  <td width="55%"></td>
+                  <td>Date</td>
+                  <td>:</td>
+                  <td></td>
                 </tr>
-               
               </table>
             </td>
           </tr>
@@ -511,11 +507,17 @@
     </tr>
     <tr>
         <td align="center">
-            <!-- <img src="assets/images/thankYou.png" width="150" /> -->
+       <div style="bottom: 0; width: 100%; text-align: center; font-size: 12px; color: #000;">
+          <p style="margin: 0;">
+          <strong>Disclaimer:</strong> This document is intended solely for the use of the recipient. Unauthorized sharing or distribution is prohibited.
+          </p>
+          </div>
         </td>
     </tr>
-  </table>
- 
+</table>
 </div>
-<button (click)="printDiv('printableDiv')">Print</button>
+<footer  id="footerdiv" >
+    <img src="../../../assets/images/footerimg.png" class="bg-logoimg" alt="Footer Image" style="width:100%;height:40px;object-fit:cover;padding-bottom:0px;margin-bottom: 0px;">
+</footer>
+</div>
 </div>

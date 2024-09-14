@@ -1,0 +1,24 @@
+<div class="signature-popup">
+  <div class="signature-options">
+    <label>
+      <input type="radio" name="signatureOption" value="draw" (change)="toggleSignatureOption('draw')" checked>
+      Draw Signature
+    </label>
+    <label>
+      <input type="radio" name="signatureOption" value="upload" (change)="toggleSignatureOption('upload')">
+      Upload Signature
+    </label>
+  </div>
+  
+  <div *ngIf="signatureOption === 'draw'" class="signature-pad">
+    <canvas #signatureCanvas></canvas>
+    <button (click)="clearSignature()" class="clear-btn">Clear</button>
+  </div>
+  
+  <div *ngIf="signatureOption === 'upload'" class="upload-section">
+    <span>Upload Signature</span>
+    <input type="file" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg"/>
+  </div>
+  <!-- <button (click)="saveSignature()">Save</button> -->
+  <button type="button" (click)="saveSignature()" style="float: right;" class="btn btn-primary">Save Signature</button>
+</div>

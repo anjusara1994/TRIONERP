@@ -13,10 +13,12 @@ namespace TrionAPI.Controllers
     public class DropDownDataController : ControllerBase
     {
         private readonly DropdownDataService _dropdownService;
+        
 
         public DropDownDataController(DropdownDataService dropdownService)
         {
             _dropdownService = dropdownService;
+            
         }
 
         [HttpGet("Authority")]

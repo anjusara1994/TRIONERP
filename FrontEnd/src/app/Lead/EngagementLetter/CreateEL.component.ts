@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { DropDownServiceService } from '../../drop-down-service.service';
+import { Router , ActivatedRoute} from '@angular/router';
+import { DropDownServiceService } from '../../Services/drop-down-service.service';
 import { DataServices } from '../../Services/DataServices.service';
 
 declare var $: any;
@@ -30,8 +30,10 @@ export class CreateELComponent implements OnInit, AfterViewInit {
     areas:{ ID: number; Name: string }[] = [];
     countries:{ ID: number; Name: string }[] = [];
     emirates:{ ID: number; Name: string }[] = [];
-
-    constructor(private fb: FormBuilder, private router: Router,private dropDownService: DropDownServiceService,private DataServices: DataServices) { }
+    ClientID?: number; 
+    isEditMode: boolean = false;
+    selectedClientId:  string = '';
+    constructor(private fb: FormBuilder, private router: Router,private dropDownService: DropDownServiceService,private DataServices: DataServices,private route: ActivatedRoute) { }
 
     ngOnInit(): void {
      
@@ -93,6 +95,15 @@ export class CreateELComponent implements OnInit, AfterViewInit {
 
         this.loadClients();
         this.loadAssignments();
+
+        this.route.queryParams.subscribe(params => {
+          if (params['ClientID']) {
+            this.ClientID = +params['ClientID'];
+            this.isEditMode = true;
+            
+            this.selectedClientId = params['ClientID'] || null;
+          }
+        });
        
       }
 
@@ -195,7 +206,6 @@ export class CreateELComponent implements OnInit, AfterViewInit {
         $(this.table.nativeElement).on('click', '.delete-btn', (event: JQuery.TriggeredEvent) => {
           const id = $(event.currentTarget).data('id');
           const elAutoid = $(event.currentTarget).data('elid');
-    debugger
             if (elAutoid) {
               ShowWarning('This assignment cannot be deleted as an engagement letter has already been generated. Please delete the engagement letter first.');
             } else {
@@ -243,6 +253,15 @@ export class CreateELComponent implements OnInit, AfterViewInit {
           .subscribe(data => {
             this.clients = data;
             this.isLoading = false;
+            debugger
+            if (this.selectedClientId) {
+              const selectedClient = this.clients.find(client => client.ID === +this.selectedClientId);
+      
+              if (selectedClient) {
+                this.ELForm.get('Client')?.setValue(selectedClient); // Set the selected client in the form
+                this.onClientChange({ value: selectedClient }); // Trigger onClientChange
+              } 
+            }
           });
       }
 
@@ -503,7 +522,18 @@ export class CreateELComponent implements OnInit, AfterViewInit {
               orderable: true
             },
             { title: 'SI.No', data: 'RowNum' },
-             { title: 'ID', data: 'ELID' },
+            {
+              title: 'Is Confirmed',
+              data: null,
+              render: (data: any, type: any, row: any) => {
+                const isConfirmed = row.IsConfirmed ? 
+                  '<span class="badge bg-success">Yes</span>' : 
+                  '<span class="badge bg-warning">No</span>';
+                return isConfirmed;
+              }
+            },
+            
+            { title: 'ID', data: 'ELID' },
             { title: 'Is Sent', data: 'isELSentforSign' },
             { title: 'Assignments', data: 'NoOfAssignments' },
             { title: 'Gross Amount', data: 'GrossAmount' },
@@ -525,28 +555,94 @@ export class CreateELComponent implements OnInit, AfterViewInit {
               data: 'Autoid',
               render: (data: any, type: any, row: any) => {
                 const clientAutoid = row.ClientAutoid;
+                const IsConfirmed = row.IsConfirmed;
+                const confirmBtnDisabled = IsConfirmed == 1 ? 'disabled-btn' : '';
+                const deleteBtnDisabled = IsConfirmed == 1 ? 'disabled-btn' : '';
+
                 return ` <button type="button" title="Download Engagement Letter"  class="btn btn-xs bgOrange view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-cloud-arrow-down"></i></button> 
-                <button type="button" title="Download Quotation"  class="btn btn-xs bgOrange view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-newspaper"></i></button>
-                <button type="button" title="Delete this"  class="btn btn-xs bgRed view-btn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-trash"></i></button>`;
+                <button type="button" title="Download Quotation"  class="btn btn-xs bgOrange view-Qnbtn" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-newspaper"></i></button>
+                <button type="button" title="Delete this"  class="btn btn-xs bgRed delete-btn ${confirmBtnDisabled}" data-id="${row.Autoid}"  data-client-id="${clientAutoid}" data-IsConfirmed="${row.IsConfirmed}"><i class="fa fa-trash"></i></button>
+                <button type="button" title="Confirm this" class="btn btn-xs bgGreen confirm-btn  ${confirmBtnDisabled}" data-id="${row.Autoid}" data-client-id="${clientAutoid}"><i class="fa fa-check"></i></button>`;
               }
             }
           ]
         });
         $(this.tableEL.nativeElement).off('click', '.view-btn');
-       
+        $(this.tableEL.nativeElement).off('click', '.view-Qnbtn');
         $(this.tableEL.nativeElement).on('click', '.view-btn', (event: JQuery.TriggeredEvent) => {
           debugger
           const autoid = $(event.currentTarget).data('id');
           const clientId = $(event.currentTarget).data('client-id');
-        
-          // Navigate to the viewEL page with the Autoid and ClientID as route parameters
-          this.router.navigate(['/ViewEL', autoid, clientId]);
+          //this.router.navigate(['/ViewEL', autoid, clientId]);
+          const url = this.router.serializeUrl(this.router.createUrlTree(['/ViewEL', autoid, clientId]));
+          window.open(url, '_blank');
+        });
+        $(this.tableEL.nativeElement).on('click', '.view-Qnbtn', (event: JQuery.TriggeredEvent) => {
+          debugger
+          const autoid = $(event.currentTarget).data('id');
+          const clientId = $(event.currentTarget).data('client-id');
+          const url = this.router.serializeUrl(this.router.createUrlTree(['/ViewQuote', autoid, clientId]));
+          window.open(url, '_blank');
         });
 
         $(this.tableEL.nativeElement).on('change', '.row-checkbox', () => {
           this.toggleButtonVisibility('btncreateEL');
         });
+
+        $(this.tableEL.nativeElement).off('click', '.confirm-btn');
+       
+        $(this.tableEL.nativeElement).on('click', '.confirm-btn', (event: JQuery.TriggeredEvent) => {
+          debugger
+          const id = $(event.currentTarget).data('id');
+           this.ConfirmRecordEL(id);
+        });
+
+
+        $(this.tableEL.nativeElement).off('click', '.delete-btn');
+       
+        $(this.tableEL.nativeElement).on('click', '.delete-btn', (event: JQuery.TriggeredEvent) => {
+          debugger
+          const id = $(event.currentTarget).data('id');
+           this.deleteRecordEL(id);
+        });
       }
 
+
+      deleteRecordEL(id: number): void {
+
+        if (confirm('Are you sure you want to delete this record?')) {
+          this.DataServices.deleteEL(id).subscribe({
+            next: () => {
+              ShowDone('Record has been deleted successfully');
+              this.initializeDataTable();
+              this.initializeELDataTable();
+            },
+            error: error => console.error('Error deleting record', error)
+          });
+        }
+        
+      }
+
+      ConfirmRecordEL(id: number): void {
+
+        if (confirm('Are you sure you want to confirm this record?Once confrimed it cannot be edited or deleted')) {
+          this.DataServices.ConfirmEL(id).subscribe({
+            next: () => {
+              ShowDone('Record has been confirmed successfully');
+              this.initializeDataTable();
+              this.initializeELDataTable();
+            },
+            error: error => console.error('Error confirming record', error)
+          });
+        }
+        
+      }
+
+      navigateToLeadList(): void {
+        const confirmation = window.confirm('Are you sure you want to go back to Home Page?');
+        if (confirmation) {
+          this.router.navigate(['/ELALL']);
+        }
+      }
  
 }

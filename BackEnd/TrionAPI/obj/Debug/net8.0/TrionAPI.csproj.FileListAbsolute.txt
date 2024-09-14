@@ -277,3 +277,4 @@ D:\All Projects\CoreConnect\TRIONERP\BackEnd\TrionAPI\obj\Debug\net8.0\refint\Tr
 D:\All Projects\CoreConnect\TRIONERP\BackEnd\TrionAPI\obj\Debug\net8.0\TrionAPI.pdb
 D:\All Projects\CoreConnect\TRIONERP\BackEnd\TrionAPI\obj\Debug\net8.0\TrionAPI.genruntimeconfig.cache
 D:\All Projects\CoreConnect\TRIONERP\BackEnd\TrionAPI\obj\Debug\net8.0\ref\TrionAPI.dll
+D:\All Projects\CoreConnect\TRIONERP\BackEnd\TrionAPI\bin\Debug\net8.0\TrionAPI.staticwebassets.runtime.json

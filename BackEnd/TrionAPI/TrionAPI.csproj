@@ -29,6 +29,8 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="uploads\signatures\" />
   </ItemGroup>
 
 </Project>

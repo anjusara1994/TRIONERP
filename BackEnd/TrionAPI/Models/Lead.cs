@@ -43,6 +43,18 @@
         public string? AddEmirates { get; set; }
         public string? AddCountry { get; set; }
 
+
+        public string? SalesPersonName { get; set; }
+        public string? SalesPersonMob { get; set; }
+        public string? SalesPersonDesignation { get; set; }
+        public string? SalesPersonEmail { get; set; }
+
+        public string? SigningPersonName { get; set; }
+        public string? SigningPersonMob { get; set; }
+        public string? SigningPersonDesignation { get; set; }
+        public string? SigningPersonEmail { get; set; }
+        public string? SigningPersonSignature { get; set; }
+
     }
 
 }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes'; 
@@ -14,16 +15,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { DropdownModule } from 'primeng/dropdown';
-import { provideHttpClient, HttpClient } from '@angular/common/http'; 
+import { provideHttpClient, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { DataTablesModule } from "angular-datatables";
 import { ScreeningComponent } from './Lead/Screening.component';
 import { CreateELComponent } from './Lead/EngagementLetter/CreateEL.component';
 import { ViewEngagementLetter } from './Lead/EngagementLetter/ViewEngagementLetter.component';
-import { LayoutComponent } from './layout.component';
-import { NumberToWordsPipe } from './number-to-words.pipe'; 
+import { LayoutComponent } from './Layout/layout.component';
+import { NumberToWordsPipe } from './commonfunctions/number-to-words.pipe'; 
 import { ServiceListComponent } from './DataMaster/service-list/service-list.component';
 import { servicelistaddComponent } from './DataMaster/service-list/service-listadd.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ViewQuote } from './Lead/EngagementLetter/ViewQuote.component';
+import { SignaturePopupComponent } from './signature-popup/signature-popup.component';
+import { JwtInterceptor } from './Services/interceptors/jwt.interceptor'; // Adjust the import path as needed
+import { AuthService } from './Services/auth.service';
+import { ELListComponent } from './Lead/EngagementLetter/ELList.component';
+import { ReportListComponent } from './Lead/Master/ReportMaster.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     NumberToWordsPipe,
     LayoutComponent,
     ServiceListComponent,
-    servicelistaddComponent
+    servicelistaddComponent,
+    ViewQuote,
+    SignaturePopupComponent,
+    ELListComponent,
+    ReportListComponent
     
   ],
   imports: [
@@ -52,9 +63,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     NgSelectModule,
     BrowserAnimationsModule,
     CKEditorModule,
+    MatDialogModule,
     RouterModule.forRoot(routes) // Configure RouterModule with routes
   ],
-  providers: [provideHttpClient(),],
+  providers: [provideHttpClient()
+    ,AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [ AppComponent]
 })
 export class AppModule { }

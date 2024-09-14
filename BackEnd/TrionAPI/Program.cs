@@ -1,8 +1,13 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TrionAPI;
 using TrionAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
 // Add services to the container.
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -25,14 +30,38 @@ builder.Services.AddTransient<DropdownDataService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "http://localhost:5242/",
+        ValidAudience = "http://localhost:4200/",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("3W5HYk2YPtWHD5Fhb0K+Qe1+jp4E4Qz+68Qz/9Eb6DA="))
+    };
+});
 
-// Configure the HTTP request pipeline.
+var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "uploads")),
+    RequestPath = "/uploads"
+});
 
 app.UseHttpsRedirection();
 
@@ -44,3 +73,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

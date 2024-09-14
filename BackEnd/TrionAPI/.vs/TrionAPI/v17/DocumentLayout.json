@@ -7,36 +7,32 @@
       "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\assignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\assignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\assignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\leadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\leadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\services\\dropdowndataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:services\\dropdowndataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\dropdowndatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\dropdowndatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\assignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\assignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\fileuploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\fileuploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\screeningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\screeningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\dropdowndata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\dropdowndata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\fileupload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\fileupload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\usermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,26 +47,6 @@
       "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\controllers\\screeningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:controllers\\screeningcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\customclasses\\customdatemodelbinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:customclasses\\customdatemodelbinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\trionapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:trionapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|d:\\all projects\\coreconnect\\trionerp\\backend\\trionapi\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C097A5F-7B03-42F4-9977-B8FBC0FD83A7}|TrionAPI.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -82,139 +58,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Lead.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Lead.cs",
-              "RelativeDocumentMoniker": "Models\\Lead.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Lead.cs",
-              "RelativeToolTip": "Models\\Lead.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T12:51:29.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Response.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Response.cs",
-              "RelativeDocumentMoniker": "Models\\Response.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Response.cs",
-              "RelativeToolTip": "Models\\Response.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T07:06:44.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DropdownDataService.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Services\\DropdownDataService.cs",
-              "RelativeDocumentMoniker": "Services\\DropdownDataService.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Services\\DropdownDataService.cs",
-              "RelativeToolTip": "Services\\DropdownDataService.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAApwDYAAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-10T06:24:44.717Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CompanyController.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\CompanyController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CompanyController.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\CompanyController.cs",
-              "RelativeToolTip": "Controllers\\CompanyController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T10:09:57.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DropDownDataController.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\DropDownDataController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DropDownDataController.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\DropDownDataController.cs",
-              "RelativeToolTip": "Controllers\\DropDownDataController.cs",
-              "ViewState": "AQIAAFkAAAAAAAAAAAApwG8AAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-10T02:34:25.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AssignmentController.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\AssignmentController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AssignmentController.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\AssignmentController.cs*",
-              "RelativeToolTip": "Controllers\\AssignmentController.cs*",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAAADsAAABQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T18:00:43.069Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Assignment.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Assignment.cs",
-              "RelativeDocumentMoniker": "Models\\Assignment.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Assignment.cs*",
-              "RelativeToolTip": "Models\\Assignment.cs*",
-              "ViewState": "AQIAACMAAAAAAAAAAAA/wC4AAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T16:24:09.868Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAA+AAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAtwD8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T07:08:24.781Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-10T01:44:56.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LeadController.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\LeadController.cs",
-              "RelativeDocumentMoniker": "Controllers\\LeadController.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\LeadController.cs",
-              "RelativeToolTip": "Controllers\\LeadController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAACUAAABMAAAA",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAAB8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T11:26:19.373Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:00:25.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FileUpload.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\FileUpload.cs",
+              "RelativeDocumentMoniker": "Models\\FileUpload.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\FileUpload.cs",
+              "RelativeToolTip": "Models\\FileUpload.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T12:11:14.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FileUploadController.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\FileUploadController.cs",
+              "RelativeDocumentMoniker": "Controllers\\FileUploadController.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\FileUploadController.cs",
+              "RelativeToolTip": "Controllers\\FileUploadController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T12:07:12.571Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "DropdownData.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\DropdownData.cs",
-              "RelativeDocumentMoniker": "Models\\DropdownData.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\DropdownData.cs",
-              "RelativeToolTip": "Models\\DropdownData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T16:22:53.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "UserMenu.cs",
               "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\UserMenu.cs",
               "RelativeDocumentMoniker": "Models\\UserMenu.cs",
@@ -226,7 +122,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
+              "Title": "Assignment.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Assignment.cs",
+              "RelativeDocumentMoniker": "Models\\Assignment.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Assignment.cs",
+              "RelativeToolTip": "Models\\Assignment.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAAAEUAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T16:24:09.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AssignmentController.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\AssignmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AssignmentController.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\AssignmentController.cs",
+              "RelativeToolTip": "Controllers\\AssignmentController.cs",
+              "ViewState": "AQIAAKMAAAAAAAAAAAAAAAsBAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T18:00:43.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DropdownDataService.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Services\\DropdownDataService.cs",
+              "RelativeDocumentMoniker": "Services\\DropdownDataService.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Services\\DropdownDataService.cs",
+              "RelativeToolTip": "Services\\DropdownDataService.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAAAFwAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T12:52:15.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Response.cs",
+              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Response.cs",
+              "RelativeDocumentMoniker": "Models\\Response.cs",
+              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Response.cs",
+              "RelativeToolTip": "Models\\Response.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T07:06:44.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Company.cs",
               "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\Company.cs",
               "RelativeDocumentMoniker": "Models\\Company.cs",
@@ -238,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
               "Title": "ScreeningController.cs",
               "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Controllers\\ScreeningController.cs",
               "RelativeDocumentMoniker": "Controllers\\ScreeningController.cs",
@@ -250,55 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAIAwwCUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T01:42:23.752Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CustomDateModelBinder.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\CustomClasses\\CustomDateModelBinder.cs",
-              "RelativeDocumentMoniker": "CustomClasses\\CustomDateModelBinder.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\CustomClasses\\CustomDateModelBinder.cs",
-              "RelativeToolTip": "CustomClasses\\CustomDateModelBinder.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T16:49:38.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T01:55:41.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "TrionAPI.csproj",
-              "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
-              "RelativeDocumentMoniker": "TrionAPI.csproj",
-              "ToolTip": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\TrionAPI.csproj",
-              "RelativeToolTip": "TrionAPI.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-10T02:51:48.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 11,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\All Projects\\CoreConnect\\TRIONERP\\BackEnd\\TrionAPI\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Context\\AppDbContext.cs",

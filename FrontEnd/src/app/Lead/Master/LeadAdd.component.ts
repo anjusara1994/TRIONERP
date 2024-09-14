@@ -2,8 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DropDownServiceService } from '../../drop-down-service.service';
+import { DropDownServiceService } from '../../Services/drop-down-service.service';
 import { DataServices } from '../../Services/DataServices.service';
+import { AuthService } from '../../Services/auth.service';
 
 @Component({
     selector:'lead',
@@ -22,7 +23,7 @@ export class LeadAddComponent implements OnInit {
       emirates:{ ID: number; Name: string }[] = [];
       isEditMode: boolean = false;
       LeadId?: number; 
-      constructor(private fb: FormBuilder,private dropDownService: DropDownServiceService ,private DataServices: DataServices, private router: Router,private route: ActivatedRoute) { }
+      constructor(private fb: FormBuilder,private dropDownService: DropDownServiceService, private authService: AuthService ,private DataServices: DataServices, private router: Router,private route: ActivatedRoute) { }
     
       ngOnInit(): void {
         this.leadForm = this.fb.group({
@@ -80,7 +81,7 @@ export class LeadAddComponent implements OnInit {
           const leadData = {
             ...this.leadForm.value,
             Opcode: this.isEditMode ? '4' : '1',
-            SubmittedBy : "1",
+            SubmittedBy : this.authService.currentUserId,
             Autoid: this.isEditMode ? this.LeadId : undefined
           };
           const transformedLeadData = {
@@ -176,7 +177,7 @@ loadleadData(LeadId: number): void {
 }
 
 navigateToLeadList(): void {
-  const confirmation = window.confirm('Are you sure you want to cancel?');
+  const confirmation = window.confirm('Are you sure you want to go back to Home Page?');
   if (confirmation) {
     this.router.navigate(['/LeadList']);
   }

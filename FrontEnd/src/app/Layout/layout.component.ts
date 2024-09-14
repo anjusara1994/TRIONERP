@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Router } from '@angular/router';
-import { DropDownServiceService } from './drop-down-service.service';
+import { DropDownServiceService } from '../Services/drop-down-service.service';
+import { AuthService } from '../Services/auth.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { DropDownServiceService } from './drop-down-service.service';
     parentMenus: string[] = []; 
     EmpId: number = 1;
     isCollapsed = false;
-    constructor(private router: Router,private dropDownService: DropDownServiceService) {}
+    constructor(private router: Router,private dropDownService: DropDownServiceService,private authService: AuthService) {}
   
     ngOnInit(): void {
       this.loadUserData();
@@ -26,13 +27,14 @@ import { DropDownServiceService } from './drop-down-service.service';
   
     loadUserData(): void {
       // You might want to fetch user data from a service or use local storage
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        this.user = JSON.parse(userData);
-      } else {
+      // const userData = localStorage.getItem('user');
+      // if (userData) {
+      //   this.user = JSON.parse(userData);
+      // } else {
         
-        this.router.navigate(['/login']);
-      }
+      //   this.router.navigate(['/login']);
+      // }
+      this.user = this.authService.currentUserValue || {};
     }
 
     loadMenu(): void {

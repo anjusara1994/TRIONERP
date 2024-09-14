@@ -15,11 +15,14 @@ export class DataServices {
   private AddAssignmentUrl = `${environment.apiUrl}/Assignment/Submit`;  
   private AssignmentListUrl = `${environment.apiUrl}/Assignment`;  
   private DeleteAssignmentUrl = `${environment.apiUrl}/Assignment/Delete`;  
+  private DeleteELUrl = `${environment.apiUrl}/Assignment/DeleteEL`;  
+  private ConfirmELUrl = `${environment.apiUrl}/Assignment/ConfirmEL`;  
   private CreateELUrl = `${environment.apiUrl}/Assignment/CreateEL`;  
   private ELListUrl = `${environment.apiUrl}/Assignment`;  
   private ServiceubmitUrl = `${environment.apiUrl}/Assignment/SubmitService`;  
   private GetServiceUrl = `${environment.apiUrl}/DropDownData/ServiceDetails`;  
   private GetLeadUrl = `${environment.apiUrl}/DropDownData/LeadDetails`;  
+  private SaveSignatureUrl = `${environment.apiUrl}/FileUpload/upload`;  
 
   constructor(private http: HttpClient) {}
 
@@ -100,6 +103,25 @@ export class DataServices {
 
     return this.http.get<any[]>(`${this.AssignmentListUrl}/AssignmentList`, { params: httpParams });
   }
+
+  getAssignmentsALL(page: number, pageSize: number, params: any[], search: string,sortColumnIndex: number,
+    sortDirection: string): Observable<any> {
+    debugger
+    let httpParams = new HttpParams()
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString())
+    .set('search', search)
+    .set('sortColumnIndex', sortColumnIndex.toString())
+    .set('sortDirection', sortDirection);
+   
+    params.forEach(param => {
+      if (param.value !== null && param.value !== undefined) {
+        httpParams = httpParams.set(param.param, param.value);
+      }
+    });
+
+    return this.http.get<any[]>(`${this.AssignmentListUrl}/AssignmentListALL`, { params: httpParams });
+  }
   getEngagementLetter(page: number, pageSize: number, params: any[], search: string,sortColumnIndex: number,
     sortDirection: string): Observable<any> {
     debugger
@@ -119,9 +141,40 @@ export class DataServices {
     return this.http.get<any[]>(`${this.ELListUrl}/ELList`, { params: httpParams });
   }
 
+  getEngagementLetterALL(page: number, pageSize: number, params: any[], search: string,sortColumnIndex: number,
+    sortDirection: string): Observable<any> {
+    debugger
+    let httpParams = new HttpParams()
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString())
+    .set('search', search)
+    .set('sortColumnIndex', sortColumnIndex.toString())
+    .set('sortDirection', sortDirection);
+   
+    params.forEach(param => {
+      if (param.value !== null && param.value !== undefined) {
+        httpParams = httpParams.set(param.param, param.value);
+      }
+    });
+
+    return this.http.get<any[]>(`${this.ELListUrl}/ELListALL`, { params: httpParams });
+  }
+
   deleteAssignment(id: number): Observable<any> {
     return this.http.delete<any>(`${this.DeleteAssignmentUrl}/${id}`).pipe(
       catchError(this.handleError<any>('deleteAssignment'))
+    );
+  }
+
+  deleteEL(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.DeleteELUrl}/${id}`).pipe(
+      catchError(this.handleError<any>('deleteEL'))
+    );
+  }
+
+  ConfirmEL(id: number): Observable<any> {
+    return this.http.post<any>(`${this.ConfirmELUrl}/${id}`, {}).pipe( // You might want to send an empty body if nothing else is needed.
+      catchError(this.handleError<any>('ConfirmEL'))
     );
   }
 
@@ -162,5 +215,14 @@ export class DataServices {
     if (country) params = params.set('country', country);
 
     return this.http.get<any[]>(this.ScreeningUNSCUrl, { params });
+  }
+
+
+  // saveSignature(base64Signature: string): Observable<any> {
+  //   const body = { File: base64Signature };
+  //   return this.http.post(this.SaveSignatureUrl, body); 
+  // }
+  saveSignature(payload: { File: string, autoid: string | null, clientid: string | null }): Observable<any> {
+    return this.http.post(this.SaveSignatureUrl, payload);
   }
 }

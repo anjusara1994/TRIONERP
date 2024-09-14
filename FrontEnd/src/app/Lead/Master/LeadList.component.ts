@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { DataServices } from '../../Services/DataServices.service';
-import { DropDownServiceService } from '../../drop-down-service.service';
+import { DropDownServiceService } from '../../Services/drop-down-service.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 

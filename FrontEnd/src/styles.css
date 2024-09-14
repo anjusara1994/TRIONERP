@@ -410,4 +410,98 @@ button.btn.btn-secondary.dropdown-toggle {
         background-color: #254779;
         color: white;
     }
+
+    .watermark {
+        position: relative;
+      }
+      
+      .watermark::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('assets/images/confidential.jpg'); /* Replace with your watermark image path */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.2; /* Adjust transparency */
+        pointer-events: none; /* So that it doesn't interfere with the content */
+        z-index: 1000;
+      }
+      .bg-logo{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+    .bg-logoimg
+    {
+        width: 200px;
+        height: 200px;
+        opacity: 0.2;
+    }
+    .print-button-container {
+        position: fixed;
+        right: 20px; /* Adjust as needed for your layout */
+        top: 50%; /* Center the button vertically */
+        transform: translateY(-50%); /* Center the button vertically */
+        z-index: 1000; /* Ensure the button stays on top of other content */
+      }
+      
+      .print-button-container button {
+        background-color: #5abe30; /* Button color */
+        color: white; /* Text color */
+        border: none; /* Remove default border */
+        padding: 10px 20px; /* Adjust padding */
+        font-size: 16px; /* Adjust font size */
+        cursor: pointer; /* Change cursor on hover */
+      }
+      
+      .print-button-container button:hover {
+        background-color: #77fb13; /* Button color on hover */
+      }
+
+      @media print {
+        /* Ensure the footer is positioned at the bottom of each printed page */
+        footer {
+            position: fixed;
+            bottom: 0px;
+            width: 100% !important;
+            height: 50px !important;
+            padding-bottom: 0px;
+        }
+        .footerdiv {
+            position: fixed;
+            bottom: 0px;
+            padding-bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: white; /* Optional, to ensure visibility */
+            z-index: 1000; /* Ensure it’s on top */
+            page-break-after: always;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+       
+    }
+
+    @media print {
+        
+        .front-page-image {
+            page-break-after: always;
+        }
+    }
+    .disabled-btn {
+        pointer-events: none;
+        opacity: 0.6;
+        cursor: not-allowed; 
+      }
+
+    
+      
       
