@@ -87,7 +87,14 @@ namespace TrionAPI.Controllers
             var Client = await _dropdownService.GetDropdownValuesAsyncUsingPageSize(OpCode, search);
             return Ok(Client);
         }
-
+        
+        [HttpGet("Status")]
+        public async Task<IActionResult> GetStatus()
+        {
+            var OpCode = "14";
+            var Status = await _dropdownService.GetDropdownValuesAsync(OpCode);
+            return Ok(Status);
+        }
 
 
         [HttpGet("PeriodType")]

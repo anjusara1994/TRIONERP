@@ -22,7 +22,10 @@ export class DataServices {
   private ServiceubmitUrl = `${environment.apiUrl}/Assignment/SubmitService`;  
   private GetServiceUrl = `${environment.apiUrl}/DropDownData/ServiceDetails`;  
   private GetLeadUrl = `${environment.apiUrl}/DropDownData/LeadDetails`;  
+  private GetAssignHistoryUrl = `${environment.apiUrl}/Assignment/AssignHistory`;
+  private GetRemarksHistoryUrl = `${environment.apiUrl}/Assignment/RemarksHistory`;
   private SaveSignatureUrl = `${environment.apiUrl}/FileUpload/upload`;  
+  private SaveAssignemntUrl = `${environment.apiUrl}/Assignment`;  
 
   constructor(private http: HttpClient) {}
 
@@ -57,6 +60,11 @@ export class DataServices {
     }).pipe(
       catchError(this.handleError<any>('createEL'))
     );
+}
+
+saveAssignment(data: any): Observable<any> {
+  debugger
+  return this.http.post<any>(`${this.SaveAssignemntUrl}/SaveAssigner`, data);
 }
   
   private handleError<T>(operation = 'operation', result?: T) {
@@ -193,7 +201,22 @@ export class DataServices {
       catchError(this.handleError<any>('getLeadById'))
     );
   }
+ 
+  getAssignmenttById(id: number): Observable<any> {
+    debugger
+    const url = `${this.GetAssignHistoryUrl}/${id}`; // Construct URL
+    return this.http.get<any>(url).pipe(
+      catchError(this.handleError<any>('getAssignmenttById'))
+    );
+  }
 
+  getRemarksById(id: number): Observable<any> {
+    debugger
+    const url = `${this.GetRemarksHistoryUrl}/${id}`; // Construct URL
+    return this.http.get<any>(url).pipe(
+      catchError(this.handleError<any>('getRemarksById'))
+    );
+  }
 
   getUNSCData(
     xmlnodepath: string,
@@ -202,7 +225,8 @@ export class DataServices {
     address?: string,
     city?: string,
     state?: string,
-    country?: string
+    country?: string,
+    listType?: string,
   ): Observable<any[]> {
     debugger
     let params = new HttpParams().set('xmlnodepath', xmlnodepath);
@@ -213,7 +237,7 @@ export class DataServices {
     if (city) params = params.set('city', city);
     if (state) params = params.set('state', state);
     if (country) params = params.set('country', country);
-
+    if (listType) params = params.set('listType', listType);
     return this.http.get<any[]>(this.ScreeningUNSCUrl, { params });
   }
 

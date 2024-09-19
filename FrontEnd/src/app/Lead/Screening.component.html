@@ -12,11 +12,24 @@
            
             <div class="row">
                 <div class="row">
-                    <div class="col-md-3">
+                  <div class="col-md-2">
+                    <label class="control-label">Category</label>
+                    <div class="d-flex align-items-center">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="listType" [(ngModel)]="listType" value="UNSC">
+                      <label class="form-check-label">UNSC</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="listType" [(ngModel)]="listType" value="Terrorist">
+                      <label class="form-check-label">Terrorist</label>
+                    </div>
+                  </div>
+                  </div>
+                    <div class="col-md-2">
                       <div class="form-group"> 
                         <label class="control-label">Type</label>
                         <select id="filter" class="form-control req" [(ngModel)]="selectedFilter" name="filter">
-                          <option value="">Choose Type</option>
+                          <!-- <option value="">Choose Type</option> -->
                           <option value="Individuals">Individuals</option>
                           <option value="Entities">Entities</option>
                         </select>
@@ -34,13 +47,13 @@
                         <input type="text" id="Country" [(ngModel)]="country" name="Country" class="form-control">
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div style="display:none;" class="col-md-3">
                       <div class="form-group"> 
                         <label class="control-label" for="Address">Address</label>
                         <input type="text" id="Address" [(ngModel)]="address" name="Address" class="form-control">
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
+                    <div class="col-md-2 mt-4">
                       <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                   </div>
@@ -69,74 +82,143 @@
                         </tbody>
                         </table>
                     </div>
-                    <table class="info-table">
-                        <tbody>
+                    <div *ngIf="listType === 'UNSC'">
+                        <table class="info-table" >
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="list-type-name">{{ item.FullName }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Title:</td>
+                                    <td class="value">{{ item.Title }}</td>
+                                </tr>
                             <tr>
-                                <td colspan="2" class="list-type-name">{{ item.FullName }}</td>
+                                <td class="label">First Name:</td>
+                                <td class="value">{{ item.FirstName }}</td>
                             </tr>
                             <tr>
-                                <td class="label">Title:</td>
-                                <td class="value">{{ item.Title }}</td>
+                                <td class="label">Second Name:</td>
+                                <td class="value">{{ item.SecondName }}</td>
                             </tr>
-                        <tr>
-                            <td class="label">First Name:</td>
-                            <td class="value">{{ item.FirstName }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Second Name:</td>
-                            <td class="value">{{ item.SecondName }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Third Name:</td>
-                            <td class="value">{{ item.ThirdName }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Fourth Name:</td>
-                            <td class="value">{{ item.FourthName }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Designation:</td>
-                            <td class="value">{{ item.Designation }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Nationality:</td>
-                            <td class="value">{{ item.Nationality }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Un ListType:</td>
-                            <td class="value">{{ item.UNListType }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Reference Numbet:</td>
-                            <td class="value">{{ item.ReferenceNumber }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Listed On:</td>
-                            <td class="value">{{ item.ListedOn }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Last Updated:</td>
-                            <td class="value">{{ item.LastUpdatedDate }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">IndividualAlias:</td>
-                            <td class="value">{{ item.IndividualAlias }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">IndividualAddress:</td>
-                            <td class="value">{{ item.IndividualAddress }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Comments:</td>
-                            <td class="value">{{ item.Comments }}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">DOB:</td>
-                            <td class="value">{{ item.DateOfBirth }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                            <tr>
+                                <td class="label">Third Name:</td>
+                                <td class="value">{{ item.ThirdName }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Fourth Name:</td>
+                                <td class="value">{{ item.FourthName }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Designation:</td>
+                                <td class="value">{{ item.Designation }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Nationality:</td>
+                                <td class="value">{{ item.Nationality }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Un ListType:</td>
+                                <td class="value">{{ item.UNListType }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Reference Number:</td>
+                                <td class="value">{{ item.ReferenceNumber }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Listed On:</td>
+                                <td class="value">{{ item.ListedOn }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Last Updated:</td>
+                                <td class="value">{{ item.LastUpdatedDate }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">IndividualAlias:</td>
+                                <td class="value">{{ item.IndividualAlias }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">IndividualAddress:</td>
+                                <td class="value">{{ item.IndividualAddress }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Comments:</td>
+                                <td class="value">{{ item.Comments }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">DOB:</td>
+                                <td class="value">{{ item.DateOfBirth }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
+
+                    <div *ngIf="listType === 'Terrorist'">
+                      <table class="info-table" >
+                          <tbody>
+                              <tr>
+                                  <td colspan="2" class="list-type-name">{{ item.FirstName }}</td>
+                              </tr>
+                          <tr>
+                              <td class="label">Full Name:</td>
+                              <td class="value">{{ item.FirstName }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">Arabic Name:</td>
+                              <td class="value">{{ item.SecondName }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">Category:</td>
+                              <td class="value">{{ item.ThirdName }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">LicenseNumber:</td>
+                              <td class="value">{{ item.FourthName }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">License Expiry:</td>
+                              <td class="value">{{ item.Designation }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">Nationality:</td>
+                              <td class="value">{{ item.Nationality }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">HeadQuarters:</td>
+                              <td class="value">{{ item.UNListType }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">Notes:</td>
+                              <td class="value">{{ item.ReferenceNumber }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">OtherInfo:</td>
+                              <td class="value">{{ item.ListedOn }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">Document Number:</td>
+                              <td class="value">{{ item.LastUpdatedDate }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">Issuer:</td>
+                              <td class="value">{{ item.IndividualAlias }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">DateofIsuue:</td>
+                              <td class="value">{{ item.IndividualAddress }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">ExpiryDate:</td>
+                              <td class="value">{{ item.Comments }}</td>
+                          </tr>
+                          <tr>
+                              <td class="label">DOB:</td>
+                              <td class="value">{{ item.DateOfBirth }}</td>
+                          </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  </div>
+                    
                 </div>
             </div>
         </div>

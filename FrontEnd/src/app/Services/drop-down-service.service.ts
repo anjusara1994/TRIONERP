@@ -18,6 +18,7 @@ export class DropDownServiceService {
   private SalesPersonUrl = `${this.apiUrl}/DropDownData/SalesPersons`;
   private SourceUrl = `${this.apiUrl}/DropDownData/Source`;
   private AreaUrl = `${this.apiUrl}/DropDownData/Area`;
+  private StatusUrl = `${this.apiUrl}/DropDownData/Status`;
   private EmiratesUrl = `${this.apiUrl}/DropDownData/Emirates`;
   private CountryUrl = `${this.apiUrl}/DropDownData/Country`;
   private ClientUrl = `${this.apiUrl}/DropDownData/Client`;
@@ -124,6 +125,21 @@ export class DropDownServiceService {
   getPeriodTypes(callback: (data: DropdownData[]) => void): void {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', this.PeriodTypeUrl, true);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        const data: DropdownData[] = JSON.parse(xhr.responseText);
+        callback(data);
+      } else {
+        console.error('Error fetching data:', xhr.statusText);
+        callback([]);
+      }
+    };
+    xhr.send();
+  }
+
+  getStatus(callback: (data: DropdownData[]) => void): void {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', this.StatusUrl, true);
     xhr.onload = () => {
       if (xhr.status === 200) {
         const data: DropdownData[] = JSON.parse(xhr.responseText);

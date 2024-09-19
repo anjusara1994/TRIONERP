@@ -6,6 +6,7 @@ import { DataServices } from '../../Services/DataServices.service';
 import { NumberToWordsPipe } from '../../commonfunctions/number-to-words.pipe'; 
 import { MatDialog } from '@angular/material/dialog';
 import { SignaturePopupComponent } from '../../signature-popup/signature-popup.component';
+import { AuthService } from '../../Services/auth.service';
 
 declare var $: any; // Declare jQuery
 @Component({
@@ -45,7 +46,7 @@ export class ViewQuote implements OnInit {
     SalesPersonDesignation: string = '';
 
     @ViewChild('closeButton') closeButton!: ElementRef<HTMLButtonElement>;
-    constructor(private route: ActivatedRoute,private router: Router,private dropDownService: DropDownServiceService,private http: HttpClient,private DataServices: DataServices) { }
+    constructor(private route: ActivatedRoute,private router: Router,private dropDownService: DropDownServiceService,private http: HttpClient,private DataServices: DataServices, private authService: AuthService) { }
 
     ngOnInit(): void {
       this.autoid = this.route.snapshot.paramMap.get('autoid');
@@ -163,7 +164,8 @@ export class ViewQuote implements OnInit {
           clientid: this.Signclientid,
           FileMode : 'Signature',
           Opcode : '1',
-          FileFolder : 'signatures'
+          FileFolder : 'signatures',
+          SubmittedBy: String(this.authService.currentUserId),
         };
     
         this.DataServices.saveSignature(signatureData).subscribe({

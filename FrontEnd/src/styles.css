@@ -464,6 +464,28 @@ button.btn.btn-secondary.dropdown-toggle {
         background-color: #77fb13; /* Button color on hover */
       }
 
+
+      .sign-button-container {
+        position: fixed;
+        right: 20px; /* Adjust as needed for your layout */
+        top: 60%; /* Center the button vertically */
+        transform: translateY(-50%); /* Center the button vertically */
+        z-index: 1000; /* Ensure the button stays on top of other content */
+      }
+      
+      .sign-button-container button {
+        background-color: #b82323; /* Button color */
+        color: white; /* Text color */
+        border: none; /* Remove default border */
+        padding: 10px 20px; /* Adjust padding */
+        font-size: 16px; /* Adjust font size */
+        cursor: pointer; /* Change cursor on hover */
+      }
+      
+      .sign-button-container button:hover {
+        background-color: #ce0d0d; /* Button color on hover */
+      }
+
       @media print {
         /* Ensure the footer is positioned at the bottom of each printed page */
         footer {

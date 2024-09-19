@@ -50,7 +50,7 @@ namespace TrionAPI.Controllers
                 {
                     await fileStream.WriteAsync(imageBytes, 0, imageBytes.Length);
                 }
-                    await SaveFilePathToDatabase(fileName, folderName, request.Opcode,request.autoid);
+                    await SaveFilePathToDatabase(fileName, folderName, request.Opcode,request.autoid,request.SubmittedBy);
 
                 return Ok(new { FilePath = filePath });
              }
@@ -65,7 +65,7 @@ namespace TrionAPI.Controllers
             }
         }
 
-        private async Task SaveFilePathToDatabase(string fileName, string folderName, string Opcode, string autoid)
+        private async Task SaveFilePathToDatabase(string fileName, string folderName, string Opcode, string autoid, string SubmittedBy)
         {
              string connectionString = _configurationService.GetConnectionString();
 
@@ -77,6 +77,7 @@ namespace TrionAPI.Controllers
                     cmd.Parameters.AddWithValue("@FilePath", folderName);
                     cmd.Parameters.AddWithValue("@Opcode", Opcode);
                     cmd.Parameters.AddWithValue("@Autoid", autoid);
+                    cmd.Parameters.AddWithValue("@SubmittedBy", SubmittedBy);
                     try
                     {
                         con.Open();

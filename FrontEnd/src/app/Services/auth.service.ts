@@ -14,7 +14,8 @@ export class AuthService {
   constructor(private http: HttpClient) {
     debugger
     const storedUser = localStorage.getItem('currentUser');
-    const initialUser = storedUser ? JSON.parse(storedUser).data : null;
+    //const initialUser = storedUser ? JSON.parse(storedUser).data : null;
+    const initialUser = storedUser ? JSON.parse(storedUser) : null;
     this.currentUserSubject = new BehaviorSubject<any>(initialUser);
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -23,18 +24,6 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  // login(username: string, password: string) {
-  //   return this.http.post<any>(`${this.apiUrl}/User/Login`, { UserName: username, SystemPassword: password })
-  //     .pipe(map(response => {
-  //       if (response.result) {
-  //         debugger
-  //         // Assuming response.data contains user details
-  //         localStorage.setItem('currentUser', JSON.stringify(response.data));
-  //         this.currentUserSubject.next(response.data);
-  //       }
-  //       return response;
-  //     }));
-  // }
   login(username: string, password: string) {
     return this.http.post<any>(`${this.apiUrl}/User/Login`, { UserName: username, SystemPassword: password })
       .pipe(map(response => {

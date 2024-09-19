@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Linq;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Data;
 
 namespace TrionAPI.Controllers
 {
@@ -11,9 +14,12 @@ namespace TrionAPI.Controllers
     public class ScreeningController : ControllerBase
     {
         private readonly HttpClient _httpClient;
-        public ScreeningController(HttpClient httpClient)
+        private readonly IConfigurationService _configurationService;
+
+        public ScreeningController(HttpClient httpClient,IConfigurationService configurationService)
         {
             _httpClient = httpClient;
+            _configurationService = configurationService;
         }
         [HttpGet("getUNSCData")]
         public async Task<IActionResult> GetUNSCData(
@@ -23,56 +29,89 @@ namespace TrionAPI.Controllers
             [FromQuery] string address = "",
             [FromQuery] string city = "",
             [FromQuery] string state = "",
-            [FromQuery] string country = "")
+            [FromQuery] string country = "",
+            [FromQuery] string listType = "" )
         {
-            // URL to fetch XML data
+            if(listType == "UNSC")
+            {
+
+            
+            
             var url = "https://scsanctions.un.org/resources/xml/en/consolidated.xml";
             var response = await _httpClient.GetStringAsync(url);
-
-            // Load XML data
+            
             var xdoc = new XmlDocument();
             xdoc.LoadXml(response);
-
-            // Select nodes based on the given XPath
+           
             var nodes = xdoc.SelectNodes(xmlnodepath);
             if (nodes == null)
                 return NotFound("No nodes found for the provided xmlnodepath.");
 
-            // Filter and parse the nodes
+            
             var results = nodes.Cast<XmlNode>()
                 .Where(node => FilterNode(node, name, id, address, city, state, country))
                 .Select(node => ParseNode(node))
                 .ToList();
 
-            // Return results or Not Found response
+          
             if (results.Any())
                 return Ok(results);
+            }
+            else
+            {
+                string connectionString = _configurationService.GetConnectionString();
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    await con.OpenAsync();
+
+                    using (var command = new SqlCommand("GetTerroristData", con))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Add parameters to the stored procedure
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Id", id);
+                        command.Parameters.AddWithValue("@Address", address);
+                        command.Parameters.AddWithValue("@City", city);
+                        command.Parameters.AddWithValue("@State", state);
+                        command.Parameters.AddWithValue("@Country", country);
+                        command.Parameters.AddWithValue("@listType", xmlnodepath);
+
+                        var reader = await command.ExecuteReaderAsync();
+                        var results = new List<Dictionary<string, object>>();
+
+                        while (await reader.ReadAsync())
+                        {
+                            // Dynamically add all columns to a dictionary
+                            var row = new Dictionary<string, object>();
+
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                string columnName = reader.GetName(i);
+                                object columnValue = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                                row[columnName] = columnValue;
+                            }
+
+                            results.Add(row);
+                        }
+
+                        if (results.Any())
+                        {
+                            return Ok(results);
+                        }
+                        else
+                        {
+                            return NotFound("No data found for the provided filters.");
+                        }
+                    }
+                }
+            }
+
+
 
             return NotFound("No matching data found.");
         }
-
-        //private bool FilterNode(XmlNode node, string name, string id, string address, string city, string state, string country)
-        //{
-        //    var firstName = node.SelectSingleNode("FIRST_NAME")?.InnerText?.Trim().ToLower();
-        //    var secondName = node.SelectSingleNode("SECOND_NAME")?.InnerText?.Trim().ToLower();
-        //    var thirdName = node.SelectSingleNode("THIRD_NAME")?.InnerText?.Trim().ToLower();
-        //    var fourthName = node.SelectSingleNode("FOURTH_NAME")?.InnerText?.Trim().ToLower();
-        //    var docId = node.SelectSingleNode("INDIVIDUAL_DOCUMENT/NUMBER")?.InnerText?.Trim().ToLower();
-        //    var streetAddress = node.SelectSingleNode("INDIVIDUAL_ADDRESS/STREET")?.InnerText?.Trim().ToLower();
-        //    var cityAddress = node.SelectSingleNode("INDIVIDUAL_ADDRESS/CITY")?.InnerText?.Trim().ToLower();
-        //    var stateAddress = node.SelectSingleNode("INDIVIDUAL_ADDRESS/STATE_PROVINCE")?.InnerText?.Trim().ToLower();
-        //    var countryAddress = node.SelectSingleNode("INDIVIDUAL_ADDRESS/COUNTRY")?.InnerText?.Trim().ToLower();
-
-        //    return (string.Equals(name?.ToLower(), firstName, StringComparison.OrdinalIgnoreCase) ||
-        //            string.Equals(name?.ToLower(), secondName, StringComparison.OrdinalIgnoreCase) ||
-        //            string.Equals(name?.ToLower(), thirdName, StringComparison.OrdinalIgnoreCase) ||
-        //            string.Equals(name?.ToLower(), fourthName, StringComparison.OrdinalIgnoreCase)) ||
-        //           string.Equals(id?.ToLower(), docId, StringComparison.OrdinalIgnoreCase) ||
-        //           string.Equals(address?.ToLower(), streetAddress, StringComparison.OrdinalIgnoreCase) ||
-        //           string.Equals(city?.ToLower(), cityAddress, StringComparison.OrdinalIgnoreCase) ||
-        //           string.Equals(state?.ToLower(), stateAddress, StringComparison.OrdinalIgnoreCase) ||
-        //           string.Equals(country?.ToLower(), countryAddress, StringComparison.OrdinalIgnoreCase);
-        //}
         private bool FilterNode(XmlNode node, string name, string id, string address, string city, string state, string country)
         {
             // Get values from XML nodes and normalize them
@@ -192,6 +231,19 @@ namespace TrionAPI.Controllers
                 Comments = comments,
                 DateOfBirth = dateOfBirth
             };
+        }
+
+
+        public class TerroristData
+        {
+            public int? Id { get; set; }
+            public string? Name { get; set; }
+            public string? Address { get; set; }
+            public string? City { get; set; }
+            public string? State { get; set; }
+            public string? Country { get; set; }
+            public string? ListType { get; set; }
+            // Add other fields if necessary
         }
     }
 }

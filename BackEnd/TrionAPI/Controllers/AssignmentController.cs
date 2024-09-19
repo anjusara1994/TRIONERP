@@ -18,6 +18,7 @@ namespace TrionAPI.Controllers
         {
             _configurationService = configurationService;
         }
+       
         [HttpPost]
         [Route("Submit")]
         public async Task<IActionResult> SubmitAssignment([FromBody] Assignment assignment)
@@ -66,6 +67,81 @@ namespace TrionAPI.Controllers
                     cmd.Parameters.AddWithValue("@Emirates", assignment.Emirates);
                     cmd.Parameters.AddWithValue("@Country", assignment.Country);
 
+
+                    cmd.Parameters.AddWithValue("@DisplayStart", 0);
+                    cmd.Parameters.AddWithValue("@DisplayLength", 10);
+                    cmd.Parameters.AddWithValue("@SortCol", 1);
+                    cmd.Parameters.AddWithValue("@SortDir", "asc");
+                    cmd.Parameters.AddWithValue("@Search", "");
+                    try
+                    {
+                        con.Open();
+                        await cmd.ExecuteNonQueryAsync();
+                        return Ok(new { result = true, message = "Assignment added successfully" });
+                    }
+                    catch (SqlException ex)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, new { result = false, message = $"Database error: {ex.Message}" });
+                    }
+                    catch (Exception ex)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, new { result = false, message = $"Unexpected error: {ex.Message}" });
+                    }
+                }
+            }
+        }
+
+        [HttpPost]
+        [Route("SaveAssigner")]
+        public async Task<IActionResult> SaveAssigner([FromBody] Assignment assignment)
+        {
+            string connectionString = _configurationService.GetConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_DT_AssignmentDataMaster", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Opcode", assignment.Opcode);
+                    cmd.Parameters.AddWithValue("@ClientID", assignment.ClientID);
+                    cmd.Parameters.AddWithValue("@AssignmentID", assignment.AssignmentId);
+                    cmd.Parameters.AddWithValue("@StartDate", assignment.StartDate);
+                    cmd.Parameters.AddWithValue("@EndDate", assignment.EndDate);
+                    cmd.Parameters.AddWithValue("@PeriodType", assignment.PeriodType);
+                    cmd.Parameters.AddWithValue("@Mode", assignment.Mode);
+                    cmd.Parameters.AddWithValue("@ProfessionalFee", assignment.ProfessionalFee);
+                    cmd.Parameters.AddWithValue("@PeriodValue", assignment.PeriodValue);
+                    cmd.Parameters.AddWithValue("@TotalAmount", assignment.TotalAmount);
+                    cmd.Parameters.AddWithValue("@VatPercent", assignment.VatPercent);
+                    cmd.Parameters.AddWithValue("@VatAmount", assignment.VatAmount);
+                    cmd.Parameters.AddWithValue("@AmountIncVat", assignment.AmountIncVat);
+                    cmd.Parameters.AddWithValue("@AuthorityFee", assignment.AuthorityFee);
+                    cmd.Parameters.AddWithValue("@AdvancePercent", assignment.AdvancePercent);
+                    cmd.Parameters.AddWithValue("@AdvanceAmount", assignment.AdvanceAmount);
+                    cmd.Parameters.AddWithValue("@SubmittedBy", assignment.SubmittedBy);
+
+
+                    cmd.Parameters.AddWithValue("@TRNNo", assignment.TRNNo);
+                    cmd.Parameters.AddWithValue("@LicenseNo", assignment.LicenseNo);
+                    cmd.Parameters.AddWithValue("@SignatoryName", assignment.SignatoryName);
+                    cmd.Parameters.AddWithValue("@SignatoryDesignation", assignment.SignatoryDesignation);
+                    cmd.Parameters.AddWithValue("@SignatoryContactNo", assignment.SignatoryContactNo);
+                    cmd.Parameters.AddWithValue("@SignatoryEmail", assignment.SignatoryEmail);
+                    cmd.Parameters.AddWithValue("@ConcernpersonName", assignment.ConcernpersonName);
+                    cmd.Parameters.AddWithValue("@ConcernpersonDesignation", assignment.ConcernpersonDesignation);
+                    cmd.Parameters.AddWithValue("@ConcernpersonContactNo", assignment.ConcernpersonContactNo);
+                    cmd.Parameters.AddWithValue("@ConcernpersonEmail", assignment.ConcernpersonEmail);
+
+                    cmd.Parameters.AddWithValue("@UnitNo", assignment.AddUnitNo);
+                    cmd.Parameters.AddWithValue("@Floor", assignment.AddFloor);
+                    cmd.Parameters.AddWithValue("@Tower", assignment.AddTower);
+                    cmd.Parameters.AddWithValue("@Area", assignment.Area);
+                    cmd.Parameters.AddWithValue("@Emirates", assignment.Emirates);
+                    cmd.Parameters.AddWithValue("@Country", assignment.Country);
+                    cmd.Parameters.AddWithValue("@primaryAssignerId", assignment.primaryAssignerId);
+                    cmd.Parameters.AddWithValue("@secondaryAssignerId", assignment.secondaryAssignerId);
+                    cmd.Parameters.AddWithValue("@Remarks", assignment.Remarks);
+                    cmd.Parameters.AddWithValue("@StatusId", assignment.StatusId);
 
                     cmd.Parameters.AddWithValue("@DisplayStart", 0);
                     cmd.Parameters.AddWithValue("@DisplayLength", 10);
@@ -843,6 +919,162 @@ namespace TrionAPI.Controllers
                         else
                         {
                             return NotFound(new { result = false, message = "Assignment not found" });
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, new { result = false, message = $"Database error: {ex.Message}" });
+                    }
+                    catch (Exception ex)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, new { result = false, message = $"Unexpected error: {ex.Message}" });
+                    }
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("AssignHistory/{id}")]
+        public async Task<IActionResult> AssignHistory(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest(new { result = false, message = "Invalid ID" });
+            }
+
+            string connectionString = _configurationService.GetConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_DT_AssignmentDataMaster", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Opcode", 16);
+                    cmd.Parameters.AddWithValue("@Autoid ", id);
+                    cmd.Parameters.AddWithValue("@ClientID", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AssignmentID", id);
+                    cmd.Parameters.AddWithValue("@StartDate", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@EndDate", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PeriodType", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Mode", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ProfessionalFee", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PeriodValue", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TotalAmount", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@VatPercent", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@VatAmount", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AmountIncVat", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AuthorityFee", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AdvancePercent", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AdvanceAmount", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@SubmittedBy", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DisplayStart", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DisplayLength", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@SortCol", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@SortDir", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Search", DBNull.Value);
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                        {
+                            var data = new List<Dictionary<string, object>>();
+                            while (await reader.ReadAsync())
+                            {
+                                var row = new Dictionary<string, object>();
+
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    string columnName = reader.GetName(i);
+                                    object? value = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                                    row.Add(columnName, value);
+                                }
+
+                                data.Add(row);
+                            }
+                            return Ok(new
+                            {
+                                draw = Request.Query["draw"].FirstOrDefault(),
+                                data = data
+                            });
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, new { result = false, message = $"Database error: {ex.Message}" });
+                    }
+                    catch (Exception ex)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, new { result = false, message = $"Unexpected error: {ex.Message}" });
+                    }
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("RemarksHistory/{id}")]
+        public async Task<IActionResult> RemarksHistory(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest(new { result = false, message = "Invalid ID" });
+            }
+
+            string connectionString = _configurationService.GetConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_DT_AssignmentDataMaster", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Opcode", 17);
+                    cmd.Parameters.AddWithValue("@Autoid ", id);
+                    cmd.Parameters.AddWithValue("@ClientID", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AssignmentID", id);
+                    cmd.Parameters.AddWithValue("@StartDate", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@EndDate", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PeriodType", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Mode", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ProfessionalFee", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PeriodValue", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TotalAmount", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@VatPercent", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@VatAmount", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AmountIncVat", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AuthorityFee", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AdvancePercent", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AdvanceAmount", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@SubmittedBy", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DisplayStart", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DisplayLength", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@SortCol", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@SortDir", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Search", DBNull.Value);
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                        {
+                            var data = new List<Dictionary<string, object>>();
+                            while (await reader.ReadAsync())
+                            {
+                                var row = new Dictionary<string, object>();
+
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    string columnName = reader.GetName(i);
+                                    object? value = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                                    row.Add(columnName, value);
+                                }
+
+                                data.Add(row);
+                            }
+                            return Ok(new
+                            {
+                                draw = Request.Query["draw"].FirstOrDefault(),
+                                data = data
+                            });
                         }
                     }
                     catch (SqlException ex)

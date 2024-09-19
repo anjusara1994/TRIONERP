@@ -26,14 +26,6 @@ import { AuthService } from '../Services/auth.service';
     }
   
     loadUserData(): void {
-      // You might want to fetch user data from a service or use local storage
-      // const userData = localStorage.getItem('user');
-      // if (userData) {
-      //   this.user = JSON.parse(userData);
-      // } else {
-        
-      //   this.router.navigate(['/login']);
-      // }
       this.user = this.authService.currentUserValue || {};
     }
 

@@ -3,6 +3,7 @@ import { DropDownServiceService } from '../../Services/drop-down-service.service
 import { DataServices } from '../../Services/DataServices.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../Services/auth.service';
 
 declare var $: any;
 declare var bootstrap: any;
@@ -17,22 +18,32 @@ export class ReportListComponent implements OnInit, AfterViewInit {
   ReportList: FormGroup = new FormGroup({});
   isLoading: boolean = false;
   clients: { ID: number; Name: string }[] = [];
+  salesPersons:{ ID: number; Name: string }[] = [];
+  statuses:{ ID: number; Name: string }[] = [];
   Assignments: { ID: number; Name: string }[] = [];
   ELNO: string = '';
   QNNO: string = '';
   searchQuery: string = '';
-  
+  selectedAssignmentId!: number;
   dtOptions: any = {}; 
   tableData: any[] = []; 
   page: number = 1; 
   pageSize: number = 10; 
   queryParams: any[] = [];
+  selectedAssignment: any = {};
+  selectedRemarks: any = {};
 
-  constructor(private dataService: DataServices,private dropDownService: DropDownServiceService,private fb: FormBuilder,private router: Router) { 
+  constructor(private dataService: DataServices,private dropDownService: DropDownServiceService, private authService: AuthService ,private fb: FormBuilder,private router: Router) { 
 
     this.ReportList = this.fb.group({
         Client: [''],
         Assignment:[''],
+        primaryAssigner: [null],
+        secondaryAssigner: [null],
+        ELNO:[''],
+        Status:[''],
+        Remarks:[''],
+
     });
   }
 
@@ -45,6 +56,13 @@ export class ReportListComponent implements OnInit, AfterViewInit {
     ];
     this.loadClients();
     this.loadAssignments();
+    this.dropDownService.getsalespersons(data => {
+      this.salesPersons = data;
+    });
+
+    this.dropDownService.getStatus(data => {
+      this.statuses = data;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -125,7 +143,16 @@ export class ReportListComponent implements OnInit, AfterViewInit {
           orderable: true
         },
         { title: 'SI.No', data: 'RowNum' },
-         { title: 'Assignment Name', data: 'AssignmentName' },
+        {
+          title: 'Assignment Name',
+          data: null,
+          render: (data: any, type: any, row: any) => {
+            const AssignmentName = row.AssignmentName;
+            const AssinPeriod = row.PeriodFrom;
+            return `<div><span>${AssignmentName}</span></div><div><span>${AssinPeriod}</span></div>`;
+          },
+          orderable: true
+        },
          {
             title: 'Client',
             data: null,
@@ -136,8 +163,52 @@ export class ReportListComponent implements OnInit, AfterViewInit {
             },
             orderable: true
           },
-        { title: 'Period', data: 'PeriodFrom' },
-        { title: 'Period', data: 'PeriodFrom' },
+          {
+            title: 'Assigner',
+            data: null,
+            render: (data: any, type: any, row: any) => {
+              const PAssigner = row.Primaryassigner ? row.Primaryassigner : ''; 
+              const SAssigner = row.Secondaryassigner ? row.Secondaryassigner : '';
+              return `<div style='display:inline-flex;padding: 2px 2px 2px 2px;'><span style='background-color: #c4b5b5;width: 120px;display: flex;'>Primary Assigner : </span>${PAssigner} </div><br><div style='display:inline-flex;padding: 2px 2px 2px 2px;'><span style='background-color: #c4b5b5;width: 120px;display: flex;'>Secondary Assigner : </span>${SAssigner} </div>`;
+            }
+          },
+          {
+            title: 'Status',
+            data: null,
+            render: (data: any, type: any, row: any) => {
+              let badgeClass = '';
+              let statusText = '';
+          
+              // Check the status and assign the appropriate class and text
+              switch (row.StatusName) {
+                case 'Pending':
+                  badgeClass = 'bg-warning';
+                  statusText = 'Pending';
+                  break;
+                case 'Cancelled':
+                  badgeClass = 'bg-danger';
+                  statusText = 'Cancelled';
+                  break;
+                case 'Assigned':
+                  badgeClass = 'bg-primary';
+                  statusText = 'Assigned';
+                  break;
+                case 'Confirmed':
+                  badgeClass = 'bg-success';
+                  statusText = 'Confirmed';
+                  break;
+                default:
+                  badgeClass = 'bg-secondary'; // Fallback color for unknown or undefined statuses
+                  statusText = 'Unknown Status';
+              }
+          
+              // Return the formatted HTML for the badge
+              return `<span class="badge ${badgeClass}">${statusText}</span>`;
+            }
+          },
+          
+        // { title: 'Period', data: 'PeriodFrom' },
+        // { title: 'Period', data: 'PeriodFrom' },
         { title: 'Type', data: 'Period' },
         {
           title: 'CreatedOn',
@@ -153,16 +224,67 @@ export class ReportListComponent implements OnInit, AfterViewInit {
           data: 'Autoid',
           render: (data: any, type: any, row: any) => {
             
-            return ` <button type="button" title="Delete Assignment" class="btn btn-xs bgRed delete-btn" data-elid="${row.ELAutoId}" data-id="${row.Autoid}"><i class="fa fa-eye"></i></button>`;
+            return ` <button type="button" class="btn-xs bgGreen view-btn" data-id="${row.Autoid}" data-client-id="${row.Autoid}"><i class="fa fa-eye"></i></button>`;
           }
         }
       ]
     });
-    $(this.table.nativeElement).off('click', '.delete-btn');
+    this.table.nativeElement.addEventListener('change', (event: any) => {
+      if (event.target.classList.contains('row-checkbox')) {
+        const checkboxes = this.table.nativeElement.querySelectorAll('.row-checkbox');
+        checkboxes.forEach((checkbox: any) => {
+          if (checkbox !== event.target) {
+            checkbox.checked = false;
+          }
+        });
+      }
+    });
+
+    $(this.table.nativeElement).on('click', '.view-btn', (event: any) => {
+      const autoid = $(event.target).closest('button').data('id');
+      this.showDetails(autoid);  // Call method to show popup
+    });
    
    
   }
 
+  showDetails(Autoid: number): void {
+    this.selectedAssignment = [];
+    this.selectedRemarks = [];
+    this.dataService.getAssignmenttById(Autoid).subscribe({
+      next: (response) => {
+        if (response && response.data && response.data.length > 0) {
+          debugger
+          this.selectedAssignment = response.data;
+          this.loadRemarks(Autoid);
+          
+        } else {
+          console.error('No data found for the given Assignment');
+        }
+        this.openDetailsBootstrapModal(); 
+      },
+      error: (error) => {
+        console.error('Error fetching assignment details', error);
+      }
+    });
+  }
+
+  loadRemarks(Autoid: number): void {
+    this.dataService.getRemarksById(Autoid).subscribe({
+      next: (response) => {
+        if (response && response.data) {
+          this.selectedRemarks = response.data;
+        } else {
+          console.error('No remarks found for the given Assignment');
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching remarks', error);
+      }
+    });
+  }
+  
+  
   onFilterChange(): void {
   debugger
     const formValues = this.ReportList.value;
@@ -179,19 +301,90 @@ export class ReportListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onEditButtonClick(event: Event): void {
+  onAssignButtonClick(event: Event): void {
     event.preventDefault();
     const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
     if (selectedCheckboxes.length === 1) {
       const selectedCheckbox = selectedCheckboxes[0] as HTMLInputElement;
       const selectedServiceId = (selectedCheckboxes[0] as HTMLInputElement).value;
-      const clientId = selectedCheckbox.getAttribute('data-client-id');
-      this.router.navigate(['/EL'], { queryParams: { ClientID: clientId } });
+      this.selectedAssignmentId = parseInt(selectedCheckbox.value, 10); 
+      this.openBootstrapModal(); 
     } else if (selectedCheckboxes.length > 1) {
       alert('Please select only one to edit.');
     } else {
       alert('Please select one to edit.');
     }
+  }
+
+  onUpdateButtonClick(event: Event): void {
+    event.preventDefault();
+    const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+    if (selectedCheckboxes.length === 1) {
+      const selectedCheckbox = selectedCheckboxes[0] as HTMLInputElement;
+      const selectedServiceId = (selectedCheckboxes[0] as HTMLInputElement).value;
+      this.selectedAssignmentId = parseInt(selectedCheckbox.value, 10); 
+      this.openRemarksBootstrapModal(); 
+    } else if (selectedCheckboxes.length > 1) {
+      alert('Please select only one to edit.');
+    } else {
+      alert('Please select one to edit.');
+    }
+  }
+
+  onSubmit(): void {
+    debugger
+    if (this.ReportList.valid) {
+      const assignData = {
+        assignmentId: this.selectedAssignmentId,
+        primaryAssignerId: this.ReportList.value.primaryAssigner.ID,  // Assuming id is in the dropdown options
+        secondaryAssignerId: this.ReportList.value.secondaryAssigner?.ID || null,
+        SubmittedBy : this.authService.currentUserId,
+        Opcode : '14',
+      };
+
+      this.dataService.saveAssignment(assignData).subscribe({
+        next: (response) => {
+          this.closeBootstrapModal();
+          ShowDone('Assigner has been assigned successfully');
+        },
+        error: (err) => {
+          ShowError('Error saving data:'+ err);
+        },
+      });
+    }
+  }
+
+  openBootstrapModal(): void {
+    // Use Bootstrap's JavaScript API to show the modal
+    const modalElement = document.getElementById('AssignDetailsModal');
+    const modal = new bootstrap.Modal(modalElement!);
+    modal.show();
+  }
+
+  openDetailsBootstrapModal(): void {
+    // Use Bootstrap's JavaScript API to show the modal
+    const modalElement = document.getElementById('DetailsModal');
+    const modal = new bootstrap.Modal(modalElement!);
+    modal.show();
+  }
+
+  openRemarksBootstrapModal(): void {
+    // Use Bootstrap's JavaScript API to show the modal
+    const modalElement = document.getElementById('AssignRemarksModal');
+    const modal = new bootstrap.Modal(modalElement!);
+    modal.show();
+  }
+
+  closeBootstrapModal(): void {
+    const modalElement = document.getElementById('AssignDetailsModal');
+    const modal = bootstrap.Modal.getInstance(modalElement!); // Get the already initialized instance
+    modal?.hide(); 
+  }
+
+  closeRemarksBootstrapModal(): void {
+    const modalElement = document.getElementById('AssignRemarksModal');
+    const modal = bootstrap.Modal.getInstance(modalElement!); // Get the already initialized instance
+    modal?.hide(); 
   }
 
   navigateToAdd() {
@@ -223,5 +416,27 @@ export class ReportListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  
+
+  onSaveStatus(): void {
+    debugger
+    if (this.ReportList.valid) {
+      const assignData = {
+        assignmentId: this.selectedAssignmentId,
+        StatusID: this.ReportList.value.Status.ID,  // Assuming id is in the dropdown options
+        Remarks: this.ReportList.value.Remarks  || '',
+        SubmittedBy : this.authService.currentUserId,
+        Opcode : '15',
+      };
+
+      this.dataService.saveAssignment(assignData).subscribe({
+        next: (response) => {
+          this.closeRemarksBootstrapModal();
+          ShowDone('Details saved successfully');
+        },
+        error: (err) => {
+          ShowDone('Error saving data:'  + err);
+        },
+      });
+    }
+  }
 }

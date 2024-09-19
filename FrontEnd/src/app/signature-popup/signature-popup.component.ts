@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, Output, Input, EventEmitter } from '@angular/core';
 import { DataServices } from '../Services/DataServices.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-signature-popup',
@@ -18,7 +19,7 @@ export class SignaturePopupComponent implements AfterViewInit {
   private isDrawing = false;
   private ctx!: CanvasRenderingContext2D;
  
-  constructor(private DataServices: DataServices) { }
+  constructor(private DataServices: DataServices, private authService: AuthService ) { }
 
   ngAfterViewInit() {
     this.initializeCanvas();
@@ -110,7 +111,8 @@ export class SignaturePopupComponent implements AfterViewInit {
     const payload = {
       File: signatureBase64,
       autoid: this.Signautoid,
-      clientid: this.Signclientid
+      clientid: this.Signclientid,
+      SubmittedBy : this.authService.currentUserId,
     };
     this.DataServices.saveSignature(payload).subscribe({
         next: (response) => {

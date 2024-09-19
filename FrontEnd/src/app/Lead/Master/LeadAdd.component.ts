@@ -81,7 +81,7 @@ export class LeadAddComponent implements OnInit {
           const leadData = {
             ...this.leadForm.value,
             Opcode: this.isEditMode ? '4' : '1',
-            SubmittedBy : this.authService.currentUserId,
+            SubmittedBy: String(this.authService.currentUserId),
             Autoid: this.isEditMode ? this.LeadId : undefined
           };
           const transformedLeadData = {

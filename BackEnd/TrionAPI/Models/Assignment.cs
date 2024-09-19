@@ -70,7 +70,12 @@ namespace TrionAPI.Models
             public string? QUOTFirstPartySign { get; set; }
             public string? QUOTSecondPartySign { get; set; }
             public string? QUOTFirstPartySignDate { get; set; }
-           public string? QUOTSecondPartySignDate { get; set; }
+            public string? QUOTSecondPartySignDate { get; set; }
+
+            public int? primaryAssignerId { get; set; }
+            public int? secondaryAssignerId { get; set; }
+            public int? StatusId { get; set; }
+            public string? Remarks { get; set; }
 
     }
 

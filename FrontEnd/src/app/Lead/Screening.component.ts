@@ -12,10 +12,11 @@ export class ScreeningComponent implements OnInit {
     Title:string;Comments:string;DateOfBirth:string;
   }[] = [];
   error: string | null = null;
-  selectedFilter: string = '';
+  selectedFilter: string = 'Individuals';
   name: string = '';
   country: string = '';
   address: string = '';
+  listType: string = 'UNSC'; 
   loading: boolean = false; // Add this line
   constructor(private dataService: DataServices) {}
 
@@ -26,13 +27,12 @@ export class ScreeningComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     const xmlnodepath = this.getXmlNodePath();
-    const city = '';  // You can modify this based on your needs
-    const state = ''; // You can modify this based on your needs
+    const city = '';  
+    const state = '';
     const id ='';
-    // const country ='dubai';
-//    const address ='dubai';
-
-    this.dataService.getUNSCData(xmlnodepath, this.name, id,this.address, city, state,this.country)
+    const listType = this.listType;
+    debugger
+    this.dataService.getUNSCData(xmlnodepath, this.name.trim(), id,this.address.trim(), city, state,this.country.trim(),listType)
       .subscribe({
         next: (response: any[]) => {
           console.log(response);
@@ -43,6 +43,8 @@ export class ScreeningComponent implements OnInit {
               this.data = []; 
               this.error = 'No data found matching the criteria.'; 
             } else {
+              debugger
+              if (listType === 'UNSC') {
               this.data = response.map((item: any) => ({
                 FirstName: item.FirstName || 'N/A',
                 SecondName: item.SecondName || 'N/A',
@@ -63,6 +65,28 @@ export class ScreeningComponent implements OnInit {
                 DateOfBirth :item.DateOfBirth || 'N/A',
               }));
               this.error = null;
+            }
+            else{
+              this.data = response.map((item: any) => ({
+                FirstName: item.FirstName || 'N/A',
+                SecondName: item.ArabicName || 'N/A',
+                ListType: 'Terrorist List',
+                FullName: item.FullName || 'N/A',
+                ThirdName: item.Category || 'N/A',
+                FourthName: item.LicenseNumber || 'N/A',
+                Designation: item.LicenseExpiry || 'N/A',
+                Nationality: item.Nationality || 'N/A',
+                UNListType: item.HeadQuarters || 'N/A',
+                ReferenceNumber: item.Notes || 'N/A' ,
+                ListedOn: item.OtherInfo || 'N/A',
+                LastUpdatedDate: item.DocumentNumber || 'N/A',
+                IndividualAlias: item.Issuer || 'N/A',
+                IndividualAddress:item.DateofIsuue|| 'N/A',
+                Title: '',
+                Comments: item.ExpiryDate || 'N/A',
+                DateOfBirth: item.dateofbirth || 'N/A',
+              }));
+            }
             }
           } else {
             this.data = [];

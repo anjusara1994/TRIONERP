@@ -16,7 +16,7 @@
                
                 <div class="col-md-3">
                     <div class="form-group"> 
-                  <label class="control-label" for="Client">Client Name  <span class="required" aria-required="true">*</span></label>
+                  <label class="control-label" for="Client">Client Name </label>
                   <p-dropdown 
                     [options]="clients"
                     formControlName="Client"
@@ -26,7 +26,6 @@
                     (onFilter)="onSearch($event, 'clients')"
                     (onChange)="onClientChange($event)" 
                     [showClear]="true"
-                    class="req reqa"
                     placeholder="Choose an Option"
                     [loading]="isLoading">
                     <ng-template pTemplate="selectedItem" let-selectedOption>
@@ -46,7 +45,7 @@
                 
                 <div class="col-md-3">
                   <div class="form-group"> 
-                <label class="control-label" for="Assignment">Assignment<span class="required" aria-required="true">*</span></label>
+                <label class="control-label" for="Assignment">Assignment</label>
                 <p-dropdown 
                   [options]="Assignments"
                   formControlName="Assignment"
@@ -55,7 +54,6 @@
                   filterBy="Name"
                   (onFilter)="onSearch($event, 'assignments')"
                   [showClear]="true"
-                  class="reqa"
                   placeholder="Choose an Option"
                   [loading]="isLoading">
                   <ng-template pTemplate="selectedItem" let-selectedOption>
@@ -73,8 +71,8 @@
               </div>
                 <div class="col-md-3">
                     <div class="form-group"> 
-                  <label class="control-label" for="TRNNo">EL ID<span class="required" aria-required="true">*</span></label>
-                  <input type="text" id="ELNO" formControlName="ELNO" class="form-control req reqa" >
+                  <label class="control-label" for="TRNNo">EL ID</label>
+                  <input type="text" id="ELNO" formControlName="ELNO" class="form-control" >
                   </div>
                 </div>
                 <div class="col-md-3 mt-4">
@@ -89,8 +87,8 @@
                             Action
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#" id="addButton"><i class="fa fa-pen"></i> Update</a></li>
-                            <li><a class="dropdown-item" href="#" id="editButton"><i class="fa fa-users-cog"></i> Assign </a></li>
+                            <li><a class="dropdown-item" href="#" (click)="onUpdateButtonClick($event)"  id="UpdateButton"><i class="fa fa-pen"></i> Update</a></li>
+                            <li><a class="dropdown-item" href="#"  (click)="onAssignButtonClick($event)"  id="editButton"><i class="fa fa-users-cog"></i> Assign </a></li>
                         </ul>
                     </div>
                 </div>
@@ -104,8 +102,10 @@
                     <th>SI.No</th>
                     <th>Assignment</th>
                     <th>Client</th>
-                    <th>Period</th>
-                    <th>Assigned Person</th>
+                    <th>Assigner</th>
+                    <th>Status</th>
+                    <!-- <th>Period</th> -->
+                    <!-- <th>Assigned Person</th> -->
                     <th>EL ID</th>
                     <th>Created On</th>
                     <th></th>
@@ -119,8 +119,187 @@
             
             </div>
   
-  
-           
+            <div class="modal fade" id="AssignDetailsModal" tabindex="-1" aria-labelledby="AssignDetailsModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="AssignDetailsModalLabel">
+                      <i class="fas fa-user-tie me-2"></i> Assign
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form begins here -->
+                    <form [formGroup]="ReportList" (ngSubmit)="onSubmit()"> 
+                      <div class="row">
+                        <!-- Primary Assigner -->
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="SalesPerson">Primary Assigner <span class="required">*</span></label>
+                            <p-dropdown 
+                              [options]="salesPersons"
+                              formControlName="primaryAssigner"
+                              optionLabel="Name"
+                              [filter]="true"
+                              filterBy="Name" 
+                              [showClear]="true"
+                              class="req"
+                              placeholder="Choose an Option">
+                              <ng-template pTemplate="selectedItem" let-selectedOption>
+                                <div>{{ selectedOption.Name }}</div>
+                              </ng-template>
+                              <ng-template pTemplate="item" let-SalesPerson>
+                                <div>{{ SalesPerson.Name }}</div>
+                              </ng-template>
+                            </p-dropdown>
+                          </div>
+                        </div>
+                        <!-- Secondary Assigner -->
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="SecondarySalesPerson">Secondary Assigner</label>
+                            <p-dropdown 
+                              [options]="salesPersons"
+                              formControlName="secondaryAssigner"
+                              optionLabel="Name"
+                              [filter]="true"
+                              filterBy="Name" 
+                              [showClear]="true"
+                              placeholder="Choose an Option">
+                              <ng-template pTemplate="selectedItem" let-selectedOption>
+                                <div>{{ selectedOption.Name }}</div>
+                              </ng-template>
+                              <ng-template pTemplate="item" let-SalesPerson>
+                                <div>{{ SalesPerson.Name }}</div>
+                              </ng-template>
+                            </p-dropdown>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" onclick="return CheckRequiredField('req');" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal fade" id="AssignRemarksModal" tabindex="-1" aria-labelledby="AssignRemarksModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="AssignRemarksModalLabel">
+                      <i class="fas fa-user-tie me-2"></i> Update Status & Remarks
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form begins here -->
+                    <form [formGroup]="ReportList" (ngSubmit)="onSaveStatus()"> 
+                      <div class="row">
+                       
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="Status">Status<span class="required">*</span></label>
+                            <p-dropdown 
+                              [options]="statuses"
+                              formControlName="Status"
+                              optionLabel="Name"
+                              [filter]="true"
+                              filterBy="Name" 
+                              [showClear]="true"
+                              class="reqs"
+                              placeholder="Choose an Option">
+                              <ng-template pTemplate="selectedItem" let-selectedOption>
+                                <div>{{ selectedOption.Name }}</div>
+                              </ng-template>
+                              <ng-template pTemplate="item" let-Status>
+                                <div>{{ Status.Name }}</div>
+                              </ng-template>
+                            </p-dropdown>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group"> 
+                        <label class="control-label" for="Remarks">Remarks<span class="required" aria-required="true">*</span></label>
+                        <input type="text" id="Remarks" formControlName="Remarks" class="form-control reqs" >
+                          </div>
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" onclick="return CheckRequiredField('reqs');" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal fade" id="DetailsModal" tabindex="-1" aria-labelledby="DetailsModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="leadDetailsModalLabel"><i class="fas fa-history"></i>View History</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+            
+                    <!-- Contact Details Section -->
+                    <div class="mb-3">
+                      <h5 class="text-secondary"><i class="fas fa-person-circle-plus me-2"></i>Assigner Details</h5>
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr class="bg-light">
+                            <th>Primary Assigner</th>
+                            <th>Secondary Assigner</th>
+                            <th>Assigned On</th>
+                            <th>Assigned By</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let assignment of selectedAssignment">
+                            <td>{{ assignment.PrimaryAssigner || 'N/A' }}</td>
+                            <td>{{ assignment.SecondaryAssigner || 'N/A' }}</td>
+                            <td>{{ assignment.AssignedOn || 'N/A' }}</td>
+                            <td>{{ assignment.AssignedBy.trim() || 'N/A' }}</td> <!-- Use trim to remove extra spaces -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                     <!-- Remarks Section -->
+                    <div class="mb-3">
+                      <h5 class="text-secondary"><i class="fas fa-comments me-2"></i>Remarks</h5>
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr class="bg-light">
+                            <th>Remark</th>
+                            <th>Status</th>
+                            <th>Created On</th>
+                            <th>Created By</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let remark of selectedRemarks">
+                            <td>{{ remark.Remarks || 'N/A' }}</td>
+                            <td>{{ remark.StatusName || 'N/A' }}</td>
+                            <td>{{ remark.AssignedOn || 'N/A' }}</td>
+                            <td>{{ remark.AssignedBy || 'N/A' }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             </div>
         </div>
       </div>

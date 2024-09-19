@@ -1,7 +1,12 @@
 <div  class="container">
+  <div class="button-container">
   <div class="print-button-container">
-    <button (click)="printDiv('printableDiv')"><i class="fa fa-print"></i> Print</button>
+    <button (click)="printDiv('printableDiv')"><i class="fa fa-print"></i> Print</button> 
   </div>
+  <div class="sign-button-container">
+    <button (click)="openModal()"><i class="fa fa-file-signature"></i> Sign</button>
+  </div>
+</div>
 <div id="printableDiv" style="height: 100%;" class="col-md-12">
   <div class="content">
   <div class="front-page-image">
@@ -156,7 +161,7 @@
                 <tr>
                   <td colspan="3" width="100%">
                     <p>
-                      <strong>First Party <button (click)="openModal()">Sign</button></strong>
+                      <strong>First Party</strong>
                       <br />
                       <strong>{{ companyName }}</strong>
                     </p>
@@ -190,7 +195,7 @@
                 <tr>
                   <td width="40%">Designation</td>
                   <td width="5%">:</td>
-                  <td width="55%">Manager</td>
+                  <td width="55%"></td>
                 </tr>
                 <tr>
                   <td>Date</td>
@@ -223,12 +228,12 @@
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="3" width="100%">
+                  <td colspan="3" style="height:80px;" width="100%">
                     <p style="font-size: 12px;">
                       <strong><em>(Sign and Company Seal)</em></strong>
                     
-                    <img src="../../../assets/images/sign.jpg" width="80px" height="80px"/>
-                    <img src="../../../assets/images/stamp.png" width="80px" height="80px" />
+                    <!-- <img src="../../../assets/images/sign.jpg" width="80px" height="80px"/>
+                    <img src="../../../assets/images/stamp.png" width="80px" height="80px" /> -->
                   </p>
                   </td>
                 </tr>
@@ -240,7 +245,7 @@
                 <tr>
                   <td width="40%">Designation</td>
                   <td width="5%">:</td>
-                  <td width="55%">Manager</td>
+                  <td width="55%"></td>
                 </tr>
                 <tr>
                   <td>Date</td>

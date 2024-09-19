@@ -13,6 +13,7 @@
         public string? FileUploadPage { get; set; }
 
         public string? FileFolder { get; set; }
+        public string? SubmittedBy { get; set; }
 
     }
 }
