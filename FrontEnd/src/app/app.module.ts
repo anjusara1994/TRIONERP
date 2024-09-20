@@ -31,6 +31,7 @@ import { JwtInterceptor } from './Services/interceptors/jwt.interceptor'; // Adj
 import { AuthService } from './Services/auth.service';
 import { ELListComponent } from './Lead/EngagementLetter/ELList.component';
 import { ReportListComponent } from './Lead/Master/ReportMaster.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -64,11 +65,11 @@ import { ReportListComponent } from './Lead/Master/ReportMaster.component';
     BrowserAnimationsModule,
     CKEditorModule,
     MatDialogModule,
-    RouterModule.forRoot(routes) // Configure RouterModule with routes
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [provideHttpClient()
     ,AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [ AppComponent]
 })
 export class AppModule { }

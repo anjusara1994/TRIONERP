@@ -1,27 +1,3 @@
-// // app.route.ts
-// import { Routes } from '@angular/router';
-// import { UserLoginComponent } from './User/Login/UserLogin.component';
-// import { LeadAddComponent } from './Lead/Master/LeadAdd.component';
-// import { LeadListComponent } from './Lead/Master/LeadList.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-// import { ScreeningComponent } from './Lead/Screening.component';
-// import { CreateELComponent } from './Lead/EngagementLetter/CreateEL.component';
-// import { ViewEngagementLetter } from './Lead/EngagementLetter/ViewEngagementLetter.component';
-// import { LayoutComponent } from './layout.component';
-
-// export const routes: Routes = [
-//   component: LayoutComponent,
-//   { path: 'login', component: UserLoginComponent },
-//   { path: 'Lead', component: LeadAddComponent },
-//   { path: 'LeadList', component: LeadListComponent },
-//   { path: 'Dashboard', component: DashboardComponent },
-//   { path: 'Screening', component: ScreeningComponent },
-//   { path: 'EL', component: CreateELComponent },
-//   { path: 'ViewEL/:autoid/:clientid', component: ViewEngagementLetter },
-//   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default redirect to /login
-//   { path: '**', redirectTo: '/login' } // Wildcard route for unknown paths
-// ];
-
 import { Routes } from '@angular/router';
 import { UserLoginComponent } from './User/Login/UserLogin.component';
 import { LeadAddComponent } from './Lead/Master/LeadAdd.component';
@@ -39,8 +15,7 @@ import { ReportListComponent } from './Lead/Master/ReportMaster.component';
 
 export const routes: Routes = [
   { path: 'login', component: UserLoginComponent },
-
-  // Routes that use the LayoutComponent as the parent
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: '',
     component: LayoutComponent,
@@ -54,12 +29,10 @@ export const routes: Routes = [
       { path: 'AddServices', component: servicelistaddComponent },
       { path: 'ELALL', component: ELListComponent },
       { path: 'Report', component: ReportListComponent },
-      // { path: 'ViewEL/:autoid/:clientid', component:  },
-      //{ path: 'ViewQuote/:autoid/:clientid', component: ViewQuote },
     ]
   },
   { path: 'ViewQuote/:autoid/:clientid', component: ViewQuote },
   { path: 'ViewEL/:autoid/:clientid', component: ViewEngagementLetter },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default redirect to /login
-  { path: '**', redirectTo: '/login' } // Wildcard route for unknown paths
+  
+  { path: '**', redirectTo: '/login' },
 ];
