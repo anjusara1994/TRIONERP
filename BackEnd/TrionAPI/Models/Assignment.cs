@@ -25,7 +25,7 @@ namespace TrionAPI.Models
             public decimal? AuthorityFee { get; set; }
             public int? AdvancePercent { get; set; }
             public decimal? AdvanceAmount { get; set; }
-            public string? SubmittedBy { get; set; }
+            public int? SubmittedBy { get; set; }
         
             [JsonConverter(typeof(CustomDateModelBinder))]
             public DateTime? CreatedOn { get; set; }

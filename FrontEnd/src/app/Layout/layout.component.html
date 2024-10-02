@@ -3,12 +3,30 @@
     <div class="row headerrow">
       <header class="col-12 text-white d-flex justify-content-between align-items-center px-3 py-2">
         <span class="d-none d-md-block">
-          <img src="../../../assets/images/companylogo.png" width="200" />
+          <img src="assets/images/companylogo.png" width="200" />
         </span>
-        <div *ngIf="user" class="d-flex align-items-center">
-          <!-- <img [src]="user.ProfilePic" class="img-fluid rounded-circle me-2"> -->
+        <!-- <div *ngIf="user" class="d-flex align-items-center">
+           <img [src]="user.ProfilePic" class="img-fluid rounded-circle me-2"> 
            <span>Welcome, {{ user.FirstName }} {{ user.LastName }} </span>
          
+        </div> -->
+        <div *ngIf="user" class="d-flex align-items-center dropdown">
+          <a
+          class="nav-link dropdown-toggle text-white"
+          href="#"
+          id="userDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Welcome, {{ user.FirstName }} {{ user.LastName }}
+        </a>
+
+        <!-- Dropdown Menu -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li>
+            <button class="dropdown-item" (click)="logout()"><i class="fas fa-sign-out" aria-hidden="true"></i> Logout</button>
+          </li>
+        </ul>
         </div>
       </header>
     </div>

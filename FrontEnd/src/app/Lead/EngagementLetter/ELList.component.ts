@@ -173,7 +173,7 @@ export class ELListComponent implements OnInit, AfterViewInit {
           debugger
           const autoid = $(event.currentTarget).data('id');
           const clientId = $(event.currentTarget).data('client-id');
-          const url = this.router.serializeUrl(this.router.createUrlTree(['/ViewEL', autoid, clientId]));
+          const url = `#/ViewEL/${autoid}/${clientId}`;
           window.open(url, '_blank');
          
         });
@@ -181,8 +181,12 @@ export class ELListComponent implements OnInit, AfterViewInit {
           debugger
           const autoid = $(event.currentTarget).data('id');
           const clientId = $(event.currentTarget).data('client-id');
-          const url = this.router.serializeUrl(this.router.createUrlTree(['/ViewQuote', autoid, clientId]));
+          //const url = this.router.serializeUrl(this.router.createUrlTree(['/ViewQuote', autoid, clientId]));
+          //window.open(url, '_blank');
+          const url = `#/ViewQuote/${autoid}/${clientId}`;
           window.open(url, '_blank');
+          //this.router.navigate(['/ViewQuote', autoid, clientId]);
+
         });
 
   }

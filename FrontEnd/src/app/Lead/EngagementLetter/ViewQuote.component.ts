@@ -49,6 +49,12 @@ export class ViewQuote implements OnInit {
     constructor(private route: ActivatedRoute,private router: Router,private dropDownService: DropDownServiceService,private http: HttpClient,private DataServices: DataServices, private authService: AuthService) { }
 
     ngOnInit(): void {
+      debugger
+      if (!this.authService.isAuthenticated()) {
+        // If not authenticated, redirect to the login page
+        this.router.navigate(['/login']);
+        return;
+      }
       this.autoid = this.route.snapshot.paramMap.get('autoid');
       this.clientid = this.route.snapshot.paramMap.get('clientid');
       this.Signautoid = this.autoid ?? '';

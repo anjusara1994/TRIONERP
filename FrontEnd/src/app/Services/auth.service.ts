@@ -50,4 +50,9 @@ export class AuthService {
     const currentUser = this.currentUserValue;
     return currentUser && currentUser ? currentUser.ID || '' : '';
   }
+
+  isAuthenticated(): boolean {
+    const currentUser = localStorage.getItem('currentUser');
+    return currentUser !== null;
+  }
 }

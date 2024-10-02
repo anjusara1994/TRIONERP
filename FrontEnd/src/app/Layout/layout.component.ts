@@ -46,7 +46,11 @@ import { AuthService } from '../Services/auth.service';
       });
       this.parentMenus = Object.keys(this.groupedMenu); // Get parent menu names
     }
-  
+    
+    logout() {
+     
+      this.router.navigate(['/login']);
+    }
   
     toggleSidebar() {
       this.isCollapsed = !this.isCollapsed;

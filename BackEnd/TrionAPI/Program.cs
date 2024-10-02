@@ -13,14 +13,14 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
 });
-// Add CORS services and configure the policy
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200") 
-                   .AllowAnyMethod() 
+            builder.WithOrigins("http://localhost:4200", "https://anjusara1994.github.io")
+                   .AllowAnyMethod()
                    .AllowAnyHeader();
         });
 });
@@ -43,8 +43,10 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = "http://localhost:5242/",
-        ValidAudience = "http://localhost:4200/",
+        //ValidIssuer = "http://localhost:5242/",
+        //ValidAudience = "http://localhost:4200/",
+        ValidIssuers = new[] { "http://localhost:5242/", "https://coreconnectapi-g5h3c2bdaqetedfn.uaenorth-01.azurewebsites.net/" },
+        ValidAudiences = new[] { "http://localhost:4200/", "https://anjusara1994.github.io/TRIONERP/" },
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("3W5HYk2YPtWHD5Fhb0K+Qe1+jp4E4Qz+68Qz/9Eb6DA="))
     };
 });
@@ -71,6 +73,7 @@ app.UseCors("AllowLocalhost");
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
 

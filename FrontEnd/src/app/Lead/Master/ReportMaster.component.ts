@@ -346,6 +346,7 @@ export class ReportListComponent implements OnInit, AfterViewInit {
         next: (response) => {
           this.closeBootstrapModal();
           ShowDone('Assigner has been assigned successfully');
+          this.initializeDataTable();
         },
         error: (err) => {
           ShowError('Error saving data:'+ err);

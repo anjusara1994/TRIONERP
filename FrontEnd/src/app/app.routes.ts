@@ -29,10 +29,11 @@ export const routes: Routes = [
       { path: 'AddServices', component: servicelistaddComponent },
       { path: 'ELALL', component: ELListComponent },
       { path: 'Report', component: ReportListComponent },
+      
     ]
   },
-  { path: 'ViewQuote/:autoid/:clientid', component: ViewQuote },
-  { path: 'ViewEL/:autoid/:clientid', component: ViewEngagementLetter },
+ { path: 'ViewQuote/:autoid/:clientid', component: ViewQuote },
+ { path: 'ViewEL/:autoid/:clientid', component: ViewEngagementLetter },
   
   { path: '**', redirectTo: '/login' },
 ];
